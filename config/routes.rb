@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :doctors, :controllers => { :registrations => "doctors/registrations" , :sessions => "doctors/sessions"}
 
   devise_for :users
-  root "home#index"
+   root "pins#index"
 
 resources :topics do
     member do
