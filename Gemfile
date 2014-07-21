@@ -34,7 +34,10 @@ gem 'socialization'
 gem 'sunspot_rails'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'sunspot_solr'
-gem 'aws-sdk', '~> 1.20.0'
+
+gem 'jquery-turbolinks'
+gem 'masonry-rails', '~> 0.2.0'
+ 
 
 group :development, :test do
      gem 'sqlite3'
