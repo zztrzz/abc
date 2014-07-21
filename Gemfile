@@ -32,7 +32,9 @@ gem 'bootstrap-sass'
 gem 'socialization'
 
 gem 'sunspot_rails'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'sunspot_solr'
+gem 'aws-sdk', '~> 1.20.0'
 
 group :development, :test do
      gem 'sqlite3'
