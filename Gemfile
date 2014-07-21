@@ -29,6 +29,11 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 
+gem 'socialization'
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 group :development, :test do
      gem 'sqlite3'
 end

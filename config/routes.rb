@@ -1,6 +1,19 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
+  resources :pins
+
+  resources :topics
+
+  devise_for :doctors, :controllers => { :registrations => "doctors/registrations" , :sessions => "doctors/sessions"}
+
   devise_for :users
   root "home#index"
+
+resources :topics do
+    member do
+      post :follow
+    end
+  end
+
 
    
   # The priority is based upon order of creation: first created -> highest priority.

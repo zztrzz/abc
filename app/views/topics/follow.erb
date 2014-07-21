@@ -1,0 +1,12 @@
+<h1> congrulations you are now following <%= @topic.name %> </h1>
+
+
+<% if user_signed_in? %>
+<% @topics.each do |topic| %>   
+<% if current_user.follows?(topic) %>
+<h2> you are following <%= topic.name %> </h2>
+<% else %>
+<%= link_to(topic.name, follow_topic_path(topic), method: :post) %>
+<% end %>
+<%end%>
+<%end%>

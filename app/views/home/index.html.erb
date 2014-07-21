@@ -1,7 +1,43 @@
  <div class="container">
  	<div class="jumbotron">
-  <h1>deneme</h1>
+  <h1>Ne arıyorsun?</h1>
+
+ 
+
    
   <p><%= link_to "Kayıt Ol", new_user_registration_path, class: "btn btn-primary btn-lg", role: "button" %></p>
 </div>
+<% if doctor_signed_in? %>
+<h1>DOKTORSUN SEN</h1>
+<%= link_to "logout", destroy_doctor_session_path, method: :delete %>
+
+<% end %>
 </div>
+
+
+<% if user_signed_in? %>
+ 
+	 
+<H3>MY TOPICS</H3>
+ 
+ 
+<% @topics.each do |topic| %>   
+<% if current_user.follows?(topic) %>
+<p><%= topic.name %></p>
+<%end%>
+<%end%>
+ 
+ 
+
+
+<h1> FOLLOW THESE TOPICS </H1>
+<% @topics.each do |topic| %>  
+<% unless current_user.follows?(topic) %>
+<%= link_to(topic.name, follow_topic_path(topic), method: :post) %>
+<% end %>
+<%end%>
+
+<%end%>
+
+
+ 
