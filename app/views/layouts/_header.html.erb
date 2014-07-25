@@ -1,20 +1,53 @@
+
+
+
 <nav class="navbar navbar-default" role="navigation">
 
  
   <ul class="nav navbar-left nav nav-pills">
-    <li><%= link_to "ABC", root_path %> </li>
+    
+    
+     
+    <div class="navbar-form navbar-left" role="search">
+       <div class="form-group">
+    <%= form_tag pins_path, :method => :get do %>
+    <%= text_field_tag :search, params[:search], class: "form-control",  placeholder: "INSTAMED" %>
+    <%= submit_tag "Ara", :name => nil, class: "btn btn-default" %>
+    <% end %>
+    </div>
+  </div>
    
   </ul>
+
+ 
    <ul class="nav navbar-right nav nav-pills">
-      <% if user_signed_in? %>
-        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-        <% else %>
-         <li><%= link_to "Sign up", new_user_registration_path %></li>
-          
-        <li><%= link_to "Sign in", new_user_session_path %></li>
+    
+      <% if user_signed_in?%>
+        <li> <%= link_to '+ Yeni Soru', new_pin_path %></li>
+        <li><%= link_to current_user.name, edit_user_registration_path %></li>
+        <li><%= link_to "Çıkış", destroy_user_session_path, method: :delete %></li>
+
+
+        <% elsif doctor_signed_in?%>
+          <%if current_doctor.name? %>
+        <li><%= link_to ("Merhaba"+" "+current_doctor.name+"!"), edit_doctor_registration_path %></li>
+          <%else%>
+          <li><%= link_to "Hesap Ayarları", edit_doctor_registration_path %></li>
+          <%end%>
+        <li><%= link_to "Çıkış", destroy_doctor_session_path, method: :delete %></li>
+         
+         
+        <%else%>
+        <li><%= link_to "ANA SAYFA", root_path %></li>
+        <li><%= link_to "KAYIT OL", new_user_registration_path %></li>
+        <li><%= link_to "GİRİŞ", new_user_session_path %></li>
         <% end %>
+      
       </ul>
+    
+ 
+      
+       
             
 
  </nav>

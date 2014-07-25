@@ -2,7 +2,7 @@
 
 <div class="panel panel-heading">
 
-<h2 class="panel-title"> Sign In , <%=link_to "Doctor Sign In", doctor_session_path %> </h2>
+<h2 class="panel-title"> Hasta Giriş (<%=link_to "Doktor Girişi için buraya tıklayın", doctor_session_path %>) </h2>
 
 </div>
 
@@ -15,19 +15,19 @@
 </div>
 
 <div class="form-group">
-  <div><%= f.label :password %><br />
+  <div><%= f.label "Şifre"%><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 </div>
 
 <div class="form-group">
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <div><%= f.check_box :remember_me %> <%= f.label "Hatırla"%></div>
   <% end -%>
 </div>
 
 <div class="form-group">
 
-  <div><%= f.submit "Sign in" %></div>
+  <div><%= f.submit "Giriş Yap" %></div>
 <% end %>
 </div>
 </div>
