@@ -11,25 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :budget %><br>
-    <%= f.number_field :budget %>
-  </div>
-  <div class="field">
-    <%= f.label :flexible %><br>
-    <%= f.check_box :flexible %>
-  </div>
+  <div class="input-group input-group-lg col-md-12" >
+     
+    <%= f.label "Sorunuz (Max 150 karakter)" %><br>
+    <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "150" %>
+  <br>
 
-  <div class="form-group">
-    <%= f.label :image %>
+ 
+    <%= f.label "Görsel Ekle" %>
     <%= f.file_field :image, class: "form-control" %>
   </div>
   
+  <br>
   <div class="actions">
+
     <%= f.submit %>
   </div>
 <% end %>
