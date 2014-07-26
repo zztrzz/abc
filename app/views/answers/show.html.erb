@@ -1,9 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4><%= @answer.created_at %></h4>
+		<h4><%= @answer.doctor.name+" "+"cevapladı..."%></h4> 
+	</div>		
+			<div class="panel-body col-med-6">
+<p>
+  <strong>Soru:</strong>
+  <%= @answer.pin.description%>
+</p>
+
+<p> <%= image_tag @answer.image.url(:medium) %> </p>
+
 <p>
   <strong>Answer:</strong>
-  <%= @answer.answer %>
+  <%= @answer.description %>
 </p>
+
+</div>
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>

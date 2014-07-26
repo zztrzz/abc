@@ -14,8 +14,7 @@
         
         <div class="panel-body">
          <%= pin.description %> 
-         <%= pin.budget %>
-         <%= pin.flexible %> 
+          
            <strong><%= pin.user.email if pin.user %></strong>
 
           <% if pin.user == current_user %>
@@ -24,6 +23,13 @@
          <%= link_to 'Edit', edit_pin_path(pin) %> 
          <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %> 
        </div>
+
+          <%elsif doctor_signed_in? %>
+          <div class="actions">
+         <%= link_to 'Answer',pin_path(pin) %> 
+       </div>
+
+
     <% end %>
   </div>
 </div>

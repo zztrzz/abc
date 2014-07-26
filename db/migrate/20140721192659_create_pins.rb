@@ -4,6 +4,7 @@ class CreatePins < ActiveRecord::Migration
       t.string :description
       t.integer :budget
       t.boolean :flexible
+       
 
       t.timestamps
     end

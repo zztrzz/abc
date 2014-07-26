@@ -11,7 +11,11 @@
   <tbody>
     <% @answers.each do |answer| %>
       <tr>
-        <td><%= answer.answer %></td>
+         <td><%= image_tag answer.image.url(:medium) %></td>
+        <td><%= answer.description %></td>
+        <td><%= answer.pin_id %></td>
+        <td><%= answer.pin %></td>
+        <td><%= answer.doctor %></td>
         <td><%= link_to 'Show', answer %></td>
         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

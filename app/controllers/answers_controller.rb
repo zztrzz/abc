@@ -10,11 +10,12 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   def show
+
   end
 
   # GET /answers/new
   def new
-    @answer = Answer.new
+    @answer = current_doctor.answers.build
   end
 
   # GET /answers/1/edit
@@ -24,7 +25,7 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
+    @answer= current_doctor.answer.build(answer_params)
 
     respond_to do |format|
       if @answer.save
@@ -69,6 +70,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:answer)
+      params.require(:answer).permit(:description, :pin_id, :doctor_id, :image)
     end
 end

@@ -3,17 +3,36 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h2> Sorunuz </h2>
+		<h2> Soru </h2>
 	</div>
 	<div class="panel-body">
 <p><%= image_tag @pin.image.url(:medium) %></p>
 <p>
    
   <%= @pin.description %>
+
+   
 </p>
 </div>
 </div>
  
+<% if @pin.user != current_user %>
+<% if doctor_signed_in? %>
+ <%= form_for @pin.answers.new do |f| %>
+ <%= @pin.id %>
+ <%= current_doctor.id %>
+   <%= f.hidden_field :pin_id, :value => @pin.id %>
+   <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+ 
+  <div class="actions">
 
+    <%= f.submit %>
+</div>
+
+<%end%>
+<%end%>
+<%end%>
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

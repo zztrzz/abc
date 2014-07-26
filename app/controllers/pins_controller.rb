@@ -10,6 +10,7 @@ class PinsController < ApplicationController
       fulltext params[:search]
     end
      @pins = @search.results
+
     
  end
     
@@ -22,10 +23,12 @@ class PinsController < ApplicationController
   # GET /pins/new
   def new
       @pin = current_user.pins.build
+      @pin.answers.build  
   end
 
   # GET /pins/1/edit
   def edit
+    @answer=Answer.new
   end
 
   # POST /pins
@@ -72,6 +75,6 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description, :budget, :flexible, :image)
+      params.require(:pin).permit(:description, :budget, :flexible, :image, answers_attributes: [:description])
     end
 end

@@ -3,7 +3,9 @@ class Doctor < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+   has_many :answers , :dependent => :destroy 
          acts_as_follower
          acts_as_followable
+
+         accepts_nested_attributes_for :answers 
 end
