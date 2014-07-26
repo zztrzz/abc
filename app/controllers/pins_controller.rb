@@ -7,12 +7,12 @@ class PinsController < ApplicationController
    
      
    def index
-    @search=Pin.search do 
-      fulltext params[:search]
-    end
-     @pins = @search.results
-
-    
+    # @search=Pin.search do 
+     # fulltext params[:search]
+    # end
+    #  @pins = @search.results
+     
+    @pins=Pin.all 
  end
     
 

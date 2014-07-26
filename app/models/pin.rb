@@ -6,9 +6,9 @@ class Pin < ActiveRecord::Base
 
      has_many :answers, :dependent => :destroy 
 
-    searchable do
-     text :description
-    end
+   # searchable do
+    # text :description
+   # end
     
     accepts_nested_attributes_for :answers 
 end

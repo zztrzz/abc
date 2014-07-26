@@ -32,9 +32,9 @@ gem 'bootstrap-sass'
 gem 'socialization'
 gem 'bower-rails'
 
-gem 'sunspot_rails'
+# gem 'sunspot_rails'
 gem 'paperclip', github: 'thoughtbot/paperclip'
-gem 'sunspot_solr'
+# gem 'sunspot_solr'
 gem 'imagesLoaded_rails'
 
 gem 'jquery-turbolinks'
