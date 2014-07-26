@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
+<% if @answer.description? %>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h4><%= @answer.created_at %></h4>
@@ -18,12 +18,26 @@
   <strong>Answer:</strong>
   <%= @answer.description %>
 </p>
-
+<p>
+<% if (doctor_signed_in? && @answer.doctor != current_doctor && !(@answer.liked_by?(current_doctor)))%>
+<%= link_to('Like', like_answer_path(@answer), method: :post) %>
+<%elsif doctor_signed_in? && @answer.liked_by?(current_doctor)%>
+<%= "You liked this" %><br>
+<%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count %><%= " peers liked this answer" %>
+<%end%>
+</p>
 </div>
+
+<div class="panel-footer">
+
 <% if @answer.doctor == current_doctor %>
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>
 
-   
-<% end %>
- 
+  <% end %>
+<% else %>
+<% redirect_to root_path %>
+  <%end%>
+
+ </div>
+</div>

@@ -19,11 +19,14 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   
-  def my_answers
+  
 
-    if doctor_signed_in?
-    @answers = current_doctor.answers.all
-  end
+ def like
+
+    @answers= Answer.all
+
+    @answer= Answer.find(params[:id])
+    current_doctor.like!(@answer)
 
   end 
 
@@ -31,7 +34,8 @@ class AnswersController < ApplicationController
 
 
   def show
-
+    @answer = Answer.find_by_id(params[:id])
+    redirect_to answers_path, notice: "Böyle bir cevap yok" if @answer.nil?
   end
 
   # GET /answers/new
@@ -91,7 +95,10 @@ class AnswersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
-      @answer = Answer.find(params[:id])
+
+       @answer = Answer.find_by_id(params[:id])
+      redirect_to answers_path, notice: "Böyle bir cevap yok" if @answer.nil?
+
     end
 
 

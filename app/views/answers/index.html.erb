@@ -2,30 +2,45 @@
 
 
 <div id="pins" class="transitions-enabled">
+    
     <% @answers.each do |answer| %>
+     
       <div class="box panel panel-default">
+        
         <div class="panel-heading">
-        <h4>Soru: <%= answer.pin.description %></h4>
+        <h6>Soru: <%= answer.pin.description %></h6>
         </div>
 
         <%= link_to image_tag(answer.image.url(:medium)), answer if answer.image_file_name %>
 
         <div class="panel-body">
-         <%= answer.description %> 
+         <h6><%= answer.description %></h6>
+
+        
           
            <strong><%= answer.doctor.email if answer.doctor.email %></strong>
+           <br>
+           
+           <% if answer.doctor == current_doctor %>
+           
 
-          <% if answer.doctor == current_doctor %>
            <div class="actions">
             <%= link_to 'Show', answer %> 
             <%= link_to 'Edit', edit_answer_path(answer) %> 
             <%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %> 
+          <% end %>
           </div>
-           <% end %>
 
-       </div>
+        
+         </div>
+         </div>
+
+          
+           
+
+        <%end%>
       </div>
-  <%end%>
+ 
  
  
 

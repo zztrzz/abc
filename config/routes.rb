@@ -17,6 +17,19 @@ resources :topics do
     end
   end
 
+ resources :answers do
+    member do
+      post :like
+    end
+  end
+
+
+
+
+
+
+  
+
 
    
   # The priority is based upon order of creation: first created -> highest priority.
