@@ -10,6 +10,8 @@ class AnswersController < ApplicationController
     @answers = current_doctor.answers.all
   elsif user_signed_in?
     redirect_to root_path, notice: "Önce doktor olarak giriş yapmalısınız!"
+  else
+    redirect_to root_path, notice: "Önce giriş yapmanız gerekir!"
   end
     
   end
