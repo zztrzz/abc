@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-default" role="navigation">
 
- 
+ <div class="nav navbar-brand"><%= link_to "Instamed", root_path %></div>
  
  
    <ul class="nav navbar-right nav nav-pills">
@@ -28,9 +28,9 @@
          
          
         <%else%>
-        <li><%= link_to "ANA SAYFA", root_path %></li>
-        <li><%= link_to "KAYIT OL", new_user_registration_path %></li>
-        <li><%= link_to "GİRİŞ", new_user_session_path %></li>
+        <li><%= link_to "Ana Sayfa", root_path %></li>
+        <li><%= link_to "Kaydol", new_user_registration_path %></li>
+        <li><%= link_to "Giriş", new_user_session_path %></li>
         <% end %>
       
       </ul>

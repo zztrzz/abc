@@ -6,18 +6,30 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    if doctor_signed_in?
-    @answers = current_doctor.answers.all
-  elsif user_signed_in?
-    redirect_to root_path, notice: "Önce doktor olarak giriş yapmalısınız!"
-  else
-    redirect_to root_path, notice: "Önce giriş yapmanız gerekir!"
+     
+  if (user_signed_in? or doctor_signed_in?)
+     @answers=Answer.all 
+   else
+    redirect_to root_path, notice: "Giriş yapmalısınız" 
+
   end
     
   end
 
   # GET /answers/1
   # GET /answers/1.json
+  
+  def my_answers
+
+    if doctor_signed_in?
+    @answers = current_doctor.answers.all
+  end
+
+  end 
+
+
+
+
   def show
 
   end

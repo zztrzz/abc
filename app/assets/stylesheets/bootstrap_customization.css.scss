@@ -8,28 +8,29 @@ $navbar-default-bg:                          white;
 $brand-primary:                                    #c0392b;
  
 @import 'bootstrap';
-.jumbotron
-{
-	 
-	position:relative;
-
-}
+ 
 
 
 .center {
      text-align: center;
 }
 
+  .jumbotron
+  {
+  	background: white;
+  	background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeTipTaps.jpg?1375029698');
+  	height: 500px;
+  }
   
- .jumbotron
- {
- 	text-align:center;
- 	background-color:white;
- 	
- }
-
+.kayit
+{
+background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeTipTaps.jpg?1375029698');
+}
   
 
 
-
+.kayitdoc
+{
+background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeAnswers.jpg?1376419576');
+}
  

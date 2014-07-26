@@ -1,15 +1,15 @@
 
-<div class="panel panel-default">
+<div class="panel panel-default kayit">
 
 <div class="panel panel-heading">
 
-<h3 class="panel-title">HASTA KAYIT FORMU  </h3>
+<h2>Hasta Kayıt</h2>
 
 </div>
 
 <div class="panel-body">
 
-  <div class="col-md-6">
+  <div class="col-md-4">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -48,10 +48,7 @@
 
  </div>
 
- <div class="col-md-6">
- <%= image_tag(url='http://www.wilcare.org/img/patient.jpg') %>
-</div>
-
+ 
 
  </div>
  

@@ -6,6 +6,17 @@
 <% link_to "Soru Sor", new_pin_path %>
 <%end%>
 
+<% unless (user_signed_in? or doctor_signed_in?) %>
+
+<div class="jumbotron">
+  <div class="container">
+  <h1>Sağlığınıza yeni bir bakış</h1>
+  <p>Sadece bir değil birden fazlasından görüş almak hayatınızı kurtarır. </p>
+  <p><a class="btn btn-primary btn-lg" role="button">Üye Ol</a></p>
+</div></div>
+<%end%>
+
+
   <div id="pins" class="transitions-enabled">
     <% @pins.each do |pin| %>
       <div class="box panel panel-default">
@@ -13,7 +24,7 @@
 
         <div class="panel-body">
          <%= pin.description %> 
-          
+          <br>
            <strong><%= pin.user.firstname if pin.user.firstname %></strong>
 
           <% if pin.user == current_user %>
