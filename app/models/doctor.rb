@@ -6,6 +6,7 @@ class Doctor < ActiveRecord::Base
    has_many :answers , :dependent => :destroy 
          acts_as_follower
          acts_as_followable
+         acts_as_liker
 
          accepts_nested_attributes_for :answers 
 end
