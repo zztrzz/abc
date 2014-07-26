@@ -12,7 +12,11 @@
   <h3><span class="glyphicon glyphicon-pushpin"></span><%= " "%><%= link_to(@answer.pin.description, @answer.pin) %>
 </h3></p>
 
-<p> <h3><%= image_tag @answer.image.url(:medium), class: "img-rounded" %>  
+<p> 
+
+   
+
+	<h3><% if @answer.image.file? %><%= image_tag @answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%> 
 
  
   <span class="glyphicon glyphicon-info-sign"></span>
@@ -26,11 +30,7 @@
 <div class="panel-footer">
 	<p>
 <% if (doctor_signed_in? && @answer.doctor != current_doctor && !(@answer.liked_by?(current_doctor)))%>
-<%= link_to like_answer_path(@answer), :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-star-empty"></span><%= " Like"%>
-<% end %>
-
-
+<%= link_to "Like ", like_answer_path(@answer), method: :post , :class => "btn btn-default" %>
 
 <%elsif doctor_signed_in? && @answer.liked_by?(current_doctor)%>
 <button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Liked</button>
