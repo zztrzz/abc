@@ -36,6 +36,8 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find_by_id(params[:id])
     redirect_to answers_path, notice: "Böyle bir cevap yok" if @answer.nil?
+    redirect_to root_path, notice: "Giriş yapınız" unless (user_signed_in?  or doctor_signed_in?)
+     
   end
 
   # GET /answers/new

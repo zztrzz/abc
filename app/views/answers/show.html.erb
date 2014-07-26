@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% if @answer.description? %>
-<div class="panel panel-info">
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(@answer.created_at) + " ago" %>
 		<h5><%= @answer.doctor.email if @answer.doctor.email%><%= " "+"cevapladı." %></h5> 
