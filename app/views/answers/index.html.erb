@@ -4,6 +4,11 @@
 <div id="pins" class="transitions-enabled">
     <% @answers.each do |answer| %>
       <div class="box panel panel-default">
+
+        <div class="panel-heading">
+        <h4>Soru: <%= answer.pin.description %></h4>
+        </div>
+        
         <%= link_to image_tag(answer.image.url(:medium)), answer if answer.image_file_name %>
 
         <div class="panel-body">
