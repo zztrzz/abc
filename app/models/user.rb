@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
          has_many :pins , :dependent => :destroy 
 
-validates :firstname, :presence => true 
+   validates :firstname, :presence => true 
          acts_as_follower 
          
 end

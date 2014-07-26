@@ -8,8 +8,8 @@ protect_from_forgery with: :exception
 protected
 
  def configure_permitted_parameters
-   devise_parameter_sanitizer.for(:sign_up) << :name
-   devise_parameter_sanitizer.for(:account_update) << :name
+   devise_parameter_sanitizer.for(:sign_up) << :firstname
+   devise_parameter_sanitizer.for(:account_update) << :firstname
    devise_parameter_sanitizer.for(:sign_up) << :licenseno
    devise_parameter_sanitizer.for(:account_update) << :licenseno
    devise_parameter_sanitizer.for(:sign_up) << :aop
