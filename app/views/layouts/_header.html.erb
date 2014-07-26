@@ -6,35 +6,7 @@
  <div class="nav navbar-brand"><%= link_to "Instamed", root_path %></div>
  
  
-   <ul class="nav navbar-right nav nav-pills">
-    
-      <% if user_signed_in?%>
-        <li> <%= link_to '+ Yeni Soru', new_pin_path %></li>
-        <%if current_user.firstname? %>
-        <li><%= link_to ("Merhaba"+" "+current_user.firstname+"!"), edit_user_registration_path %></li>
-          <%else%>
-          <li><%= link_to "Hesap Ayarları", edit_user_registration_path %></li>
-          <%end%>
-        <li><%= link_to "Çıkış", destroy_user_session_path, method: :delete %></li>
-
-
-        <% elsif doctor_signed_in?%>
-          <%if current_doctor.name? %>
-        <li><%= link_to ("Merhaba"+" "+current_doctor.name+"!"), edit_doctor_registration_path %></li>
-          <%else%>
-          <li><%= link_to "Hesap Ayarları", edit_doctor_registration_path %></li>
-          <%end%>
-        <li><%= link_to "Çıkış", destroy_doctor_session_path, method: :delete %></li>
-         
-         
-        <%else%>
-        <li><%= link_to "Ana Sayfa", root_path %></li>
-        <li><%= link_to "Kaydol", new_user_registration_path %></li>
-        <li><%= link_to "Giriş", new_user_session_path %></li>
-        <% end %>
-      
-      </ul>
-    
+  
  
       
        
