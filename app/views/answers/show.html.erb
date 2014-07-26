@@ -1,34 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <% if @answer.description? %>
-<div class="panel panel-default">
+<div class="panel panel-info">
 	<div class="panel-heading">
-		<h4><%= @answer.created_at %></h4>
-		<h4><%= @answer.doctor.email if @answer.doctor%><%= " "+"cevapladı..." %></h4> 
+		<span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(@answer.created_at) + " ago" %>
+		<h5><%= @answer.doctor.email if @answer.doctor.email%><%= " "+"cevapladı." %></h5> 
 	</div>		
-			<div class="panel-body col-med-6">
+			<div class="panel-body">
 <p>
-  <strong>Soru:</strong>
-  <%= @answer.pin.description%>
+ 
+  <h3><span class="glyphicon glyphicon-pushpin"></span><%= " "%><%= link_to(@answer.pin.description, @answer.pin) %>
+</h3></p>
+
+<p> <h3><%= image_tag @answer.image.url(:medium), class: "img-rounded" %>  
+
+ 
+  <span class="glyphicon glyphicon-info-sign"></span>
+  <%= @answer.description %></h3>
 </p>
 
-<p> <%= image_tag @answer.image.url(:medium) %> </p>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @answer.description %>
-</p>
-<p>
-<% if (doctor_signed_in? && @answer.doctor != current_doctor && !(@answer.liked_by?(current_doctor)))%>
-<%= link_to('Like', like_answer_path(@answer), method: :post) %>
-<%elsif doctor_signed_in? && @answer.liked_by?(current_doctor)%>
-<%= "You liked this" %><br>
-<%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count %><%= " peers liked this answer" %>
-<%end%>
-</p>
+
 </div>
 
 <div class="panel-footer">
+	<p>
+<% if (doctor_signed_in? && @answer.doctor != current_doctor && !(@answer.liked_by?(current_doctor)))%>
+<%= link_to like_answer_path(@answer), :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-star-empty"></span><%= " Like"%>
+<% end %>
+
+
+
+<%elsif doctor_signed_in? && @answer.liked_by?(current_doctor)%>
+<button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Liked</button>
+<p><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count-1 %><%= " more peers liked this answer" %></p>
+<%else%>
+<p><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count %><%= " peers liked this answer" %></p>
+<%end%>
+</p>
 
 <% if @answer.doctor == current_doctor %>
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
