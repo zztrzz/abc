@@ -6,9 +6,10 @@
 		<h2> Soru </h2>
 	</div>
 	<div class="panel-body">
-<p><%= image_tag @pin.image.url(:medium) %></p>
-<p>
-   
+		 
+<p><%= image_tag @pin.image.url(:medium) if @pin.image %></p>
+ 
+<p> 
   <%= @pin.description %>
 
    
@@ -24,10 +25,12 @@
    <%= f.hidden_field :pin_id, :value => @pin.id %>
    <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description %><br>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
  
   <div class="actions">
-
+<br>
     <%= f.submit %>
 </div>
 

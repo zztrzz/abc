@@ -7,15 +7,12 @@
   <div id="pins" class="transitions-enabled">
     <% @pins.each do |pin| %>
       <div class="box panel panel-default">
-        <%= link_to image_tag(pin.image.url(:medium)), pin %>
+        <%= link_to image_tag(pin.image.url(:medium)), pin if pin.image_file_name %>
 
-
-
-        
         <div class="panel-body">
          <%= pin.description %> 
           
-           <strong><%= pin.user.email if pin.user %></strong>
+           <strong><%= pin.user.firstname if pin.user.firstname %></strong>
 
           <% if pin.user == current_user %>
            <div class="actions">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726080729) do
+ActiveRecord::Schema.define(version: 20140726082810) do
 
   create_table "answers", force: true do |t|
     t.string   "answer"
@@ -19,12 +19,15 @@ ActiveRecord::Schema.define(version: 20140726080729) do
     t.datetime "updated_at"
     t.integer  "pin_id"
     t.string   "description"
-    t.integer  "doctor_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "doctor_id"
   end
+
+  add_index "answers", ["doctor_id"], name: "index_answers_on_doctor_id"
+  add_index "answers", ["pin_id"], name: "index_answers_on_pin_id"
 
   create_table "doctors", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -98,7 +101,6 @@ ActiveRecord::Schema.define(version: 20140726080729) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "answer_id"
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
@@ -122,7 +124,6 @@ ActiveRecord::Schema.define(version: 20140726080729) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.string   "firstname"
   end
 

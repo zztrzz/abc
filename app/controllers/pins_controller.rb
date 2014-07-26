@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /pins
   # GET /pins.json
@@ -22,13 +23,20 @@ class PinsController < ApplicationController
 
   # GET /pins/new
   def new
+    if doctor_signed_in?
+      redirect_to pins_path, notice: "Doktorlar soru oluşturamıyor"
+    elsif user_signed_in?
       @pin = current_user.pins.build
-      @pin.answers.build  
+      @pin.answers.build
+
+    else
+      redirect_to user_session_path, notice: "Önce giriş yapmalısınız!"
+      end  
   end
 
   # GET /pins/1/edit
   def edit
-    @answer=Answer.new
+    
   end
 
   # POST /pins

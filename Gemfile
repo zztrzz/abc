@@ -44,7 +44,7 @@ gem 'masonry-rails', '~> 0.2.0'
 
  
 
- 
+ gem 'aws-sdk'
 
 group :development, :test do
      gem 'sqlite3'

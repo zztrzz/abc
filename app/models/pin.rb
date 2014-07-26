@@ -8,8 +8,7 @@ class Pin < ActiveRecord::Base
 
     searchable do
      text :description
-     
     end
-
+    
     accepts_nested_attributes_for :answers 
 end

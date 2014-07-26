@@ -1,10 +1,17 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_doctor!, except: [:index, :show]
+  before_action :correct_doctor, only: [:edit, :update, :destroy]
 
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
+    if doctor_signed_in?
+    @answers = current_doctor.answers.all
+  elsif user_signed_in?
+    redirect_to root_path, notice: "Önce doktor olarak giriş yapmalısınız!"
+  end
+    
   end
 
   # GET /answers/1
@@ -15,7 +22,12 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
+    if doctor_signed_in?
     @answer = current_doctor.answers.build
+  elsif user_signed_in?
+    reirect_to root_path, notice: "Sadece doktorlar cevaplayabilir!"
+  else redirect_to doctor_session_path, notice: "Doktor olarak giriş yapmalısınız!"
+  end
   end
 
   # GET /answers/1/edit
@@ -25,7 +37,7 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer= current_doctor.answer.build(answer_params)
+    @answer= current_doctor.answers.build(answer_params)
 
     respond_to do |format|
       if @answer.save
@@ -68,8 +80,13 @@ class AnswersController < ApplicationController
       @answer = Answer.find(params[:id])
     end
 
+
+def correct_doctor
+      @answer = current_doctor.answers.find_by(id: params[:id])
+      redirect_to answers_path, notice: "Not authorized to edit this answer" if @answer.nil?
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:description, :pin_id, :doctor_id, :image)
+      params.require(:answer).permit(:description, :pin_id, :image)
     end
 end
