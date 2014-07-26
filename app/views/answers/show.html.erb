@@ -4,7 +4,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h4><%= @answer.created_at %></h4>
-		<h4><%= @answer.doctor.name+" "+"cevapladı..."%></h4> 
+		<h4><%= @answer.doctor.email if @answer.doctor%><%= " "+"cevapladı..." %></h4> 
 	</div>		
 			<div class="panel-body col-med-6">
 <p>
