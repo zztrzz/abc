@@ -1,3 +1,8 @@
- 
+
+<%if user_signed_in? %>
+Bu doktoru takip edin: <%= @answer.doctor.email %>
+<%elsif doctor_signed_in? %>
+tebrikler şimdi soru cevaplayın
+<%end%> 
  
  
