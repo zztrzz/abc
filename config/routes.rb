@@ -24,8 +24,7 @@ resources :topics do
     end
   end
 
-
-
+ 
 
 
 

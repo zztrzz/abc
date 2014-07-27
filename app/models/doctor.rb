@@ -7,6 +7,7 @@ class Doctor < ActiveRecord::Base
          acts_as_follower
          acts_as_followable
          acts_as_liker
+         acts_as_likeable 
 
          accepts_nested_attributes_for :answers 
 end

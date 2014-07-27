@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_doctor!, except: [:index, :show]
+  before_action :authenticate_doctor!, except: [:index, :show, :like]
   before_action :correct_doctor, only: [:edit, :update, :destroy]
+
 
   # GET /answers
   # GET /answers.json
@@ -26,9 +27,12 @@ class AnswersController < ApplicationController
  def like
 
     @answers= Answer.all
-
     @answer= Answer.find(params[:id])
+    
+    if doctor_signed_in?
     current_doctor.like!(@answer)
+    elsif current_user.like!(@answer)
+    end
 
   end 
 
@@ -44,9 +48,6 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-
-    
-
     if doctor_signed_in?
     @answer = current_doctor.answers.build
     
@@ -64,7 +65,9 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
+    
     @answer= current_doctor.answers.build(answer_params)
+   
 
     respond_to do |format|
       if @answer.save
@@ -117,6 +120,6 @@ def correct_doctor
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:description, :pin_id, :image, :doctor_id, topics_attributes: [:name])
+      params.require(:answer).permit(:description, :pin_id, :image, :doctor_id, :user_id, topics_attributes: [:name])
     end
 end

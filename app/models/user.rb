@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
 
    validates :firstname, :presence => true 
          acts_as_follower 
+         acts_as_liker
          
 end
