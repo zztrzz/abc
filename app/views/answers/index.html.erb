@@ -1,50 +1,11 @@
  
-<div id="pins" class="transitions-enabled">
-    
-    <% @answers.each do |answer| %>
-     
-      <div class="box panel panel-default">
-        
-       
-
-        
-         
-          <ul class="list-group">
-          <li class="list-group-item">
-          <h5><span class="glyphicon glyphicon-ok"></span><%= " " %><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " agreed " %></li></h5>
-
-          
-
-         <li class="list-group-item"><h4><%= " "%><%= link_to(answer.pin.description, answer.pin) %></h4></li>
-        
-          <li class="list-group-item"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "..." %><%end%> </li>
-
-          <li class="list-group-item"><h4> <%= answer.description %></h4></li>
-
-          
-         <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(answer.created_at) + " önce,   " %>
-          <%= answer.doctor.email if answer.doctor.email%><%= " "+"cevapladı." %></h6>
-        </li>
-           
-           
-           </ul>
-            
-           <% if answer.doctor == current_doctor %>
- 
-           <div class="actions">
-            <%= link_to 'Show', answer %> 
-            <%= link_to 'Edit', edit_answer_path(answer) %> 
-            <%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %> 
-          
-          <% end %>
-       
-         
-
-        
-       
-      </div>
-       <%end%>
-</div>
+<% if user_signed_in? %>
+<%= render 'answerbox' %>
+<% elsif doctor_signed_in? %>
+<%= render 'answerbox' %>
+<%else %>
+<%= redirect_to :root, notice: "Giriş yapınız" %>
+<%end%>
 
           
            

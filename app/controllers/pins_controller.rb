@@ -42,7 +42,9 @@ class PinsController < ApplicationController
   # POST /pins
   # POST /pins.json
   def create
-    @pin = current_user.pins.build(pin_params)
+    if user_signed_in?
+    @pin = current_user.pins.build(pin_params) 
+  end
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
@@ -73,8 +75,12 @@ class PinsController < ApplicationController
  
 
    def correct_user
+      if doctor_signed_in?
+        redirect_to pins_path, notice: "Bu işlemi yapmaya yetkiniz yok."
+      else
       @pin = current_user.pins.find_by(id: params[:id])
-      redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
+      redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil? 
+      end
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_pin

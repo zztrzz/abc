@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   if (user_signed_in? or doctor_signed_in?)
      @answers=Answer.all 
    else
-    redirect_to root_path, notice: "Giriş yapmalısınız" 
+    redirect_to pins_path
 
   end
     

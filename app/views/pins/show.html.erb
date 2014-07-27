@@ -1,41 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h2> Soru </h2>
-	</div>
-	<div class="panel-body">
-		 
-<p><%= image_tag @pin.image.url(:medium) if @pin.image %></p>
  
-<p> 
-  <%= @pin.description %>
 
-   
-</p>
+<div class="col-md-12">
+
+
+	<ul class="list-group">
+		<li class="list-group-item"> Soru </li>
+    <li class="list-group-item"><% if @pin.image.file? %><%= image_tag @pin.image.url(:medium)%><%else%><%= "..."%><%end%></li>
+    <li class="list-group-item"> <%= @pin.description %></li>
+</ul>
+
+
+  <div class="input-group input-group-lg col-md-12">
+      <% if @pin.user != current_user %>
+      <% if doctor_signed_in? %>
+
+
+      <%= form_for @pin.answers.new do |f| %>
+            <p><%= "Pin id:" %><%= @pin.id %></p>
+            <p><%= "Doctor Email:" %><%= current_doctor.email if doctor_signed_in? %></p>
+            <%= f.hidden_field :pin_id, :value => @pin.id %>
+             <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
+             <%= f.label "Cevap - 200 karakter" %><br>
+             <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "200" %><br>
+              <%= f.label :image %><br>
+               <%= f.file_field :image%>
+ 
+                <div class="actions">
+              <br>
+                  <%= f.submit "Cevapla", class: 'btn btn-success' %>
+              </div>
+
+
+      <%end%>
+      <%end%>
+      <%end%>
 </div>
 </div>
  
-<% if @pin.user != current_user %>
-<% if doctor_signed_in? %>
- <%= form_for @pin.answers.new do |f| %>
- <%= @pin.id %>
- <%= current_doctor.id %>
-   <%= f.hidden_field :pin_id, :value => @pin.id %>
-   <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %><br>
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
  
-  <div class="actions">
-<br>
-    <%= f.submit %>
-</div>
-
-<%end%>
-<%end%>
-<%end%>
 <%= link_to 'Edit', edit_pin_path(@pin) %> |
 <%= link_to 'Back', pins_path %>

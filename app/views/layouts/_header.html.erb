@@ -19,8 +19,8 @@
 
 
         <% elsif doctor_signed_in?%>
-          <%if current_doctor.name? %>
-        <li><%= link_to ("Merhaba"+" "+current_doctor.name+"!"), edit_doctor_registration_path %></li>
+          <%if current_doctor.email? %>
+        <li><%= link_to ("Merhaba"+" "+current_doctor.email+"!"), edit_doctor_registration_path %></li>
           <%else%>
           <li><%= link_to "Hesap Ayarları", edit_doctor_registration_path %></li>
           <%end%>
