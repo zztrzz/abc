@@ -30,11 +30,12 @@
 	 <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count-1 %><%= " more peers agreed" %></li>
 
 	<% elsif (user_signed_in? && !(@answer.liked_by?(current_user))) %>
-	<li class="list-group-item"><%= link_to "Like ", like_answer_path(@answer), method: :post , :class => "btn btn-default" %></li>
+	<li class="list-group-item"><%= link_to "Thank you!", like_answer_path(@answer), method: :post , :class => "btn btn-default" %>
+   
 
-	
+    
 	<%else%>
-	<li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agree" %></li>
+	<li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer", liker_type: "Doctor").distinct.count %><%= " doctors agree" %></li>
 	<%end%>
 
 
