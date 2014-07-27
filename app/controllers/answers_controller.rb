@@ -44,6 +44,7 @@ class AnswersController < ApplicationController
   def new
     if doctor_signed_in?
     @answer = current_doctor.answers.build
+    @answer.topics.build 
   elsif user_signed_in?
     redirect_to root_path, notice: "Sadece doktorlar cevaplayabilir!"
   else redirect_to doctor_session_path, notice: "Doktor olarak giriş yapmalısınız!"
@@ -110,6 +111,6 @@ def correct_doctor
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:description, :pin_id, :image, :doctor_id)
+      params.require(:answer).permit(:description, :pin_id, :image, :doctor_id, topics_attributes: [:name])
     end
 end
