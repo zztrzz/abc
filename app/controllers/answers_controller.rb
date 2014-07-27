@@ -9,6 +9,8 @@ class AnswersController < ApplicationController
      
   if (user_signed_in? or doctor_signed_in?)
      @answers=Answer.all 
+      
+      
    else
     redirect_to pins_path
 
@@ -42,13 +44,17 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
+
+    
+
     if doctor_signed_in?
     @answer = current_doctor.answers.build
-    @answer.topics.build 
+    
   elsif user_signed_in?
     redirect_to root_path, notice: "Sadece doktorlar cevaplayabilir!"
   else redirect_to doctor_session_path, notice: "Doktor olarak giriş yapmalısınız!"
   end
+  @answer.topics.build 
   end
 
   # GET /answers/1/edit

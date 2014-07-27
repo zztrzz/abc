@@ -9,13 +9,18 @@
       <div class="box2 col-md-10">
           
       <ul class="list-group">
-          <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(answer.created_at) + " ago" %>
-          <%= answer.doctor.email if answer.doctor.email%><%= " "+"cevapladı." %></li></h6>
+          <li class="list-group-item"><h5><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(answer.created_at) + " ago" %>
+          <%= answer.doctor.email if answer.doctor.email%><%= " "+"cevapladı." %></li></h5>
            
-          <li class="list-group-item"><%= link_to(answer.pin.description, answer.pin) %></li>
+          <li class="list-group-item"><h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
 
           <li class="list-group-item"><div class="row"><div class="col-md-4"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></div> <div class="col-md-8" text-align="center"><span class="glyphicon glyphicon-info-sign"></span>
             <%= answer.description %></div></li>
+
+          <li class="list-group-item">
+        <% answer.topics.each do |topic| %>
+        <span class="label label-info"><%= topic.name %></span>
+        <% end %></li>
 
         <% if (doctor_signed_in? && answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>
                 <li class="list-group-item"><%= link_to "Like ", like_answer_path(answer), method: :post , :class => "btn btn-default" %></li>
@@ -23,9 +28,9 @@
                 <%elsif doctor_signed_in? && answer.liked_by?(current_doctor)%>
 
                 <li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Liked</button></li>
-                 <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count-1 %><%= " more peers agreed" %></li>
+                 <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count-1 %><%= " more doctors agreed" %></li>
                 <%else%>
-                <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " peers liked this answer" %></li>
+                <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agree" %></li>
         <%end%>
       </ul>
     </div>

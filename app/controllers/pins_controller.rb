@@ -23,15 +23,16 @@ class PinsController < ApplicationController
 
   # GET /pins/new
   def new
+     
     if doctor_signed_in?
       redirect_to pins_path, notice: "Doktorlar soru oluşturamıyor"
     elsif user_signed_in?
       @pin = current_user.pins.build
-      @pin.answers.build
-
+     
     else
       redirect_to user_session_path, notice: "Önce giriş yapmalısınız!"
       end  
+       @pin.answers.build
   end
 
   # GET /pins/1/edit
@@ -89,6 +90,6 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description, :budget, :flexible, :image, answers_attributes: [:description])
+      params.require(:pin).permit(:description, :budget, :flexible, :image, answers_attributes: [:description, :image, topics_attributes: [:name]])
     end
 end
