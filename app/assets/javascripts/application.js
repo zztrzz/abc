@@ -11,11 +11,19 @@
 // about supported directives.
 //
 //= require jquery
- 
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require masonry/jquery.masonry
-//= require jquery.turbolinks
+
 //= require_tree .
  
-  $('.selectpicker').selectpicker();
+  
+
+jQuery.ready();
+
+$('#mylink').click(function (event) {
+  alert('Hooray!');
+  event.preventDefault(); // Prevent link from following its href
+});
+ 
