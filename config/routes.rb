@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :topics
 
-  devise_for :doctors, :controllers => { :registrations => "doctors/registrations" , :sessions => "doctors/sessions"}
+  devise_for :doctors, :controllers => { :registrations => "doctors/registrations" , :sessions => "doctors/sessions", :show => "doctors"}
 
   devise_for :users
 
@@ -24,8 +24,9 @@ resources :topics do
     end
   end
 
- 
 
+ 
+get 'doctors/:id' => 'doctors#show'
 
 
   

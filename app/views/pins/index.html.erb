@@ -1,18 +1,22 @@
  
- 
- 
 <% unless (user_signed_in? or doctor_signed_in?) %>
+ 
 
           <div class="jumbotron">
-            <div class="container">
-            <h1>Sağlığınıza yeni bir bakış</h1>
+             <div class="container">
+          <h1>Sağlığınıza yeni bir bakış</h1>
+   
             <p>Sadece bir değil birden fazla görüş almak hayatınızı kurtarır. </p>
             <p><a class="btn btn-primary btn-lg" role="button">Davetiye İste</a></p>
-          </div></div>
+            
+   </div>
+              
+          </div>
 
 
 <%end%>
 
+ 
 
   <div id="pins" class="transitions-enabled">
     
@@ -56,6 +60,6 @@
    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
 
- 
+
  
  
