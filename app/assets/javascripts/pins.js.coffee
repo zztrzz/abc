@@ -13,8 +13,5 @@ $ ->
   $('#mylink').click ->
   	$(this).removeClass 'disabled'
   	$(this).addClass 'disabled'
-  	$(this).append 'ed' 
+  	$(this).append '-d' 
  
-  
-
-  

@@ -8,21 +8,20 @@
    
             <p>Sadece bir değil birden fazla görüş almak hayatınızı kurtarır. </p>
             <p><a class="btn btn-primary btn-lg" role="button">Davetiye İste</a></p>
-            
-   </div>
-              
-          </div>
-
+            </div>
+            </div>
 
 <%end%>
+<% if user_signed_in? %>
+<%= render 'layouts/leftnav' %>
+<div class="col-md-9">
+<%end%>
 
- 
 
   <div id="pins" class="transitions-enabled">
     
     <% @pins.each do |pin| %>
-     
-<div class="box">
+        <div class="box">
          <ul class="list-group">
             <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago" %>
     <%= pin.user.firstname if pin.user.firstname %><%= " "+"sordu." %></li></h6>
@@ -54,12 +53,19 @@
 
 
   </div>
-    
+
   
+
+
+    
+ 
  <div class="center">
    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-</div>
+ </div>
+ 
 
+</div>
+</div>
 
  
  

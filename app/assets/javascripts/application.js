@@ -17,6 +17,9 @@
 //= require masonry/jquery.masonry
 
 //= require_tree .
- 
-  
 
+ $('#sidebar').affix({
+  offset: {
+    top: $('.navbar').height()
+  }
+}); 

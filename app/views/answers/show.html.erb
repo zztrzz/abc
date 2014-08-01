@@ -22,16 +22,16 @@
 
 
 	<% if (doctor_signed_in? && @answer.doctor != current_doctor && !(@answer.liked_by?(current_doctor)))%>
-	<li class="list-group-item"><%= link_to "Like ", like_answer_path(@answer), method: :post , :class => "btn btn-default"  %></li>
+	<li class="list-group-item"><%= link_to "Agree", like_answer_path(@answer), method: :post , :class => "btn btn-default", :id => 'mylink' , :remote => true %></li>
 
 
 	<% elsif (doctor_signed_in? && (@answer.liked_by?(current_doctor)))%>
 
-	<li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Liked</button></li>
-	 <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count-1 %><%= " more peers agreed" %></li>
+	<li class="list-group-item"><button class="btn btn-default"><span class="glyphicon glyphicon-star"><%= " "%></span>Agreed</button></li>
+	 <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count%><%= " peers agreed" %></li>
 
 	<% elsif (user_signed_in? && !(@answer.liked_by?(current_user))) %>
-	<li class="list-group-item"><%= link_to "Thank", like_answer_path(@answer), method: :post , :id => 'mylink' , :remote => true, class: "btn btn-default" %></button></li>
+	<li class="list-group-item"><%= link_to "Thank", like_answer_path(@answer), method: :post , :id => 'mylink' , :remote => true, class: "btn btn-default" %></li>
    
 	<%else%>
 	<li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer", liker_type: "Doctor").distinct.count %><%= " doctors agree" %></li>

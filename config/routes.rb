@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :pins
 
+  resources :charges
+
   resources :topics
 
   devise_for :doctors, :controllers => { :registrations => "doctors/registrations" , :sessions => "doctors/sessions", :show => "doctors"}
@@ -26,7 +28,9 @@ resources :topics do
 
 
  
-get 'doctors/:id' => 'doctors#show'
+get 'doctors/:id', to: 'doctors#show', as: 'your_doctor'
+
+
 
 
   

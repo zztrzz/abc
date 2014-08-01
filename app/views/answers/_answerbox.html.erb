@@ -1,38 +1,56 @@
-<div>welcome user and doc</div>
+<div class="col-md-7"> 
 
-
-     
-    <% @answers.each do |answer| %>
-     
-      <div id="pins" class="transitions-enabled">
+<% @answers.each do |answer| %>
  
-      <div class="box2 col-md-10">
-          
       <ul class="list-group">
-          <li class="list-group-item"><h5><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(answer.created_at) + " ago" %>
-          <%= answer.doctor.email if answer.doctor.email%><%= " "+"cevapladı." %></li></h5>
+
+<!-- answerbox time ago ve doktor ismi-->
+          <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(answer.created_at) + " ago" %>
+
+          <%= answer.doctor.email if answer.doctor.email %> <%= link_to " cevapladı.", your_doctor_path(answer.doctor.id) %> </li></h6>
+
+<!-- soru -->
            
           <li class="list-group-item"><h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
 
-          <li class="list-group-item"><div class="row"><div class="col-md-4"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></div> <div class="col-md-8" text-align="center"><span class="glyphicon glyphicon-info-sign"></span>
-            <%= answer.description %></div></li>
+<!-- cevap table içinde resimle birlikte -->
+
+          <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><span class="glyphicon glyphicon-info-sign"></span>
+            <%= answer.description %></td></tr></table></li>
+
+<!-- etiketler -->
 
           <li class="list-group-item">
-        <% answer.topics.each do |topic| %>
-        <span class="label label-info"><%= topic.name %></span>
-        <% end %></li>
+              <% answer.topics.each do |topic| %>
+                <span class="label label-info"><%= topic.name %></span>
+              <% end %>
+          </li>
+
+<!-- doktor loginse ve cevaba agree olmamışsa agree butonu ve altına kaç doktor agree olduğu bilgisi -->
 
         <% if (doctor_signed_in? && answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>
-                <li class="list-group-item"><%= link_to "Like ", like_answer_path(answer), method: :post , :class => "btn btn-default" %></li>
+                <li class="list-group-item"><%= link_to "Agree", like_answer_path(answer), method: :post , :class => "btn btn-default" , :remote => true, :id=> "mylink" %></li>
+
+                <li class="list-group-item" id="agreement"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agreed" %></li>
+
+<!-- doktor loginse ve cevaba agree olmışsa AGREED butonu (info yani mavi) ve altına kaç agree olduğu bilgisi-->
 
                 <%elsif doctor_signed_in? && answer.liked_by?(current_doctor)%>
 
-                <li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Liked</button></li>
-                 <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count-1 %><%= " more doctors agreed" %></li>
+                <li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Agreed</button></li>
+
+                 <li class="list-group-item" id="agreement"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agreed" %></li>
+
+<!-- doktor login değilse veya user loginse kaç doktor agree olduğu bilgisi -->
+
                 <%else%>
-                <li class="list-group-item"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agree" %></li>
+                <li class="list-group-item"><h5><em><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agree" %></em></h5></li>
         <%end%>
+      
       </ul>
-    </div>
-      </div>
+    
+    
+   
+      
   <%end%>
+  </div>

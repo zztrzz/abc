@@ -1,8 +1,16 @@
- 
 <% if user_signed_in? %>
+<%= render 'layouts/leftnav' %>
 <%= render 'answerbox' %>
+</div>
+</div>
+ 
+ 
 <% elsif doctor_signed_in? %>
+<%= render 'layouts/leftnav' %>
 <%= render 'answerbox' %>
+</div>
+</div>
+ 
 <%else %>
 <%= redirect_to :root, notice: "Giriş yapınız" %>
 <%end%>

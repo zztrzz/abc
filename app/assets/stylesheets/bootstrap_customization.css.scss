@@ -1,5 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
-
+ 
 $body-bg: #ecf0f1;
 $font-family-sans-serif:                'Helvetica Neue', Helvetica, Arial, sans-serif;
   
@@ -14,7 +13,7 @@ $brand-primary:                                    #c0392b;
      text-align: center;
 }
 
-  .jumbotron
+.jumbotron
   {
    
   	background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeTipTaps.jpg?1375029698');
@@ -35,10 +34,52 @@ background: image-url('network.png');
 background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeAnswers.jpg?1376419576');
 }
  
+  
 
- .list-group-item h6 {font-size:10px; color: #a8a8a8;}
+.list-group-item h6 {font-size:10px; color: #a8a8a8;}
 .list-group-item h5 {font-size:12px; color: #a8a8a8;}
 
+  #sidebar-nav.affix {
+    position: fixed;
+    top:25px;
+    width:228px;
+    background-color: #ecf0f1;
+  }
 
-
+@media (min-width: 768px) {
   
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+    width: 190px;
+    background-color: #ecf0f1;
+ 
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+
+td {
+    padding: 5px;
+}
+
+#agreement
+{
+	color: blue;
+	font-family: lato;
+	font-size: 9px;
+}

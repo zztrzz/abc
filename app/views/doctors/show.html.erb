@@ -1,1 +1,42 @@
-<%= @doctor.id %>
+ 
+ 
+<%= render 'layouts/leftnav' %>
+ 
+<div class="col-sm-6">
+
+	<div class="panel panel-default">
+
+		<div class="panel-heading">Doktor'a Özel Soru Sor</div>
+		
+		<div class="panel-body">
+
+		<ul class="list-group">
+		 	<li class="list-group-item">Doktor İsmi: <%= @doctor.email %></li>   
+  			<li class="list-group-item">Hastane: </li>   
+
+ 			<li class="list-group-item">Uzmanlık Alanı:</li>   
+  			<li class="list-group-item">Tecrube: </li>   
+
+
+  			<li class="list-group-item">
+
+  	 			<%= form_tag charges_path do %>
+  		   			 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Soru Sorma Ücreti"
+          data-amount="2000"></script> 
+	
+  	 
+    
+   				<% end %>
+   		 
+ 
+  		    </li>
+  		</ul>
+  		</div>
+		</div>
+
+
+</div>
+</div>
+ 
