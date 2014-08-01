@@ -32,8 +32,7 @@ gem 'spring',        group: :development
 
 gem "braintree"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'mailboxer'
-
+ 
 
 gem 'bootstrap-sass'
 

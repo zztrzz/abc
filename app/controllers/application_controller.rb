@@ -26,9 +26,23 @@ protected
    devise_parameter_sanitizer.for(:account_update) << :okulveyil
    devise_parameter_sanitizer.for(:sign_up) << :gsm
    devise_parameter_sanitizer.for(:account_update) << :gsm
+   devise_parameter_sanitizer.for(:account_update) << :conversations
+   devise_parameter_sanitizer.for(:account_update) << :conversation
+   devise_parameter_sanitizer.for(:account_update) << :message
+   devise_parameter_sanitizer.for(:account_update) << :recipients
+
+
+
+
+
+
  end
 
-  
+  def conversations_params
+    params.require(:conversations).permit(:recipients, :body, :subject, :conversations, :conversation, :message)
+  end
+
+
 end
 
  

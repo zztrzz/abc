@@ -7,7 +7,7 @@
 <!-- answerbox time ago ve doktor ismi-->
           <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(answer.created_at) + " ago" %>
 
-          <%= answer.doctor.email if answer.doctor.email %> <%= link_to " cevapladı.", your_doctor_path(answer.doctor.id) %> </li></h6>
+          <%= answer.doctor.email if answer.doctor.email %> <%= link_to " cevapladı.", doctor_path(answer.doctor.id) %> </li></h6>
 
 <!-- soru -->
            

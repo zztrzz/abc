@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   resources :answers
 
+
+
   resources :pins
 
   resources :charges
@@ -26,11 +28,11 @@ resources :topics do
     end
   end
 
-
  
-get 'doctors/:id', to: 'doctors#show', as: 'your_doctor'
+ 
+get 'doctors/:id', to: 'doctors#show', as: 'doctor'
 
-
+get 'users/:id', to: 'users#show', as: 'user'
 
 
   
