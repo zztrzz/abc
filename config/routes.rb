@@ -13,13 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-   resources :users do
-             resources :messages do
-               collection do
-                 post :delete_selected
-               end
-             end
-           end
+    
 
   root "answers#index"
 
