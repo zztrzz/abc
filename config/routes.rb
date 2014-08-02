@@ -3,13 +3,9 @@ Rails.application.routes.draw do
  
 
   resources :answers
-  
-  resources :messages 
-
 
   resources :pins
 
-  resources :charges
 
   resources :topics
 
