@@ -4,20 +4,20 @@
  
 <div class="col-sm-6">
 
+
 	<div class="panel panel-default">
 
-		<div class="panel-heading">Doktor'a Özel Soru Sor</div>
+		<div class="panel-heading"><h1>Doktor'a Özel Mesaj At</h1></div>
 		
 		<div class="panel-body">
+ 
+     <% if user_signed_in? %>
 
-		<ul class="list-group">
-		 	<li class="list-group-item">Doktor İsmi: <%= @doctor.email %></li>   
-  			<li class="list-group-item">Hastane: </li>   
-
- 			<li class="list-group-item">Uzmanlık Alanı:</li>   
-  			<li class="list-group-item">Tecrube: </li>   
-
-
+		  <ul class="list-group">
+      <li class="list-group-item">Doktor İsim: <%= @doctor.name %></li>  
+		 	<li class="list-group-item">Doktor Okul: <%= @doctor.okulveyil %></li>   
+  	  <li class="list-group-item">Ünvanı:<%= @doctor.aop %></li>   
+  	 
   			<li class="list-group-item">
 
   	 			<%= form_tag charges_path do %>
@@ -32,8 +32,27 @@
    		 
  
   		    </li>
-  		</ul>
+  		    
+        </ul>
+
+        <%else%>
+        <%= link_to "Mesaj" %>
+
+   
+      <%end%>
+
   		</div>
+
+
+      
+
+
+
+    
+
+
+
+
 		</div>
 
 

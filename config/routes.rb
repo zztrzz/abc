@@ -1,7 +1,10 @@
 Rails.application.routes.draw do 
   
-  resources :answers
+ 
 
+  resources :answers
+  
+  resources :messages 
 
 
   resources :pins
@@ -13,6 +16,14 @@ Rails.application.routes.draw do
   devise_for :doctors, :controllers => { :registrations => "doctors/registrations" , :sessions => "doctors/sessions", :show => "doctors"}
 
   devise_for :users
+
+   resources :users do
+             resources :messages do
+               collection do
+                 post :delete_selected
+               end
+             end
+           end
 
   root "answers#index"
 
@@ -28,11 +39,11 @@ resources :topics do
     end
   end
 
+  
  
- 
-get 'doctors/:id', to: 'doctors#show', as: 'doctor'
+get 'doctors/:id', to: 'doctors#show', as: 'your_doctor'
 
-get 'users/:id', to: 'users#show', as: 'user'
+get 'users/:id', to: 'users#show', as: 'your_user'
 
 
   

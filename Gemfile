@@ -32,8 +32,9 @@ gem 'spring',        group: :development
 
 gem "braintree"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
- 
+gem 'simple-private-messages', '0.0.0', :git => 'https://github.com/jongilbraith/simple-private-messages.git'
 
+gem 'therubyracer', :platform => :ruby
 gem 'bootstrap-sass'
 
 gem 'socialization'
@@ -46,12 +47,15 @@ gem 'imagesLoaded_rails'
 
 gem 'jquery-turbolinks'
 gem 'masonry-rails', '~> 0.2.0'
- gem 'will_paginate', '~> 3.0.5'
+ 
  gem 'will_paginate-bootstrap'
 
- 
+ gem 'will_paginate', '~> 3.0.5'
 
  gem 'aws-sdk'
+
+  
+
 
 group :development, :test do
      gem 'sqlite3'

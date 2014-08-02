@@ -9,8 +9,8 @@
     
       <% if user_signed_in?%>
         <li> <%= link_to '+ Yeni Soru', new_pin_path %></li>
-        <%if current_user.firstname? %>
-        <li><%= link_to ("Merhaba"+" "+current_user.firstname+"!"), edit_user_registration_path %></li>
+        <%if current_user.name? %>
+        <li><%= link_to ("Merhaba"+" "+current_user.name+"!"), edit_user_registration_path %></li>
           <%else%>
           <li><%= link_to "Hesap Ayarları", edit_user_registration_path %></li>
           <%end%>

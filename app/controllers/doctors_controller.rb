@@ -3,7 +3,8 @@ class DoctorsController < ApplicationController
 	before_action :correct_use, only: [:edit, :update, :destroy, :show]
 
 def show
-   @doctor
+   @doctor= Doctor.find_by(id: params[:id])
+   
 
 end
 
@@ -15,7 +16,7 @@ private
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:doctor_id)
+      params.require(:doctor).permit(:doctor_id, :message_id)
     end
   
   def correct_use

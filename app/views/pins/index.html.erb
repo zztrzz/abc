@@ -24,7 +24,7 @@
         <div class="box">
          <ul class="list-group">
             <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago" %>
-    <%= pin.user.firstname if pin.user.firstname %><%= " "+"sordu." %></li></h6>
+    <%= pin.user.name if pin.user.name %><%= " "+"sordu." %></li></h6>
 
 
             <li class="list-group-item"><h3><%= pin.description %></h3> </li>
