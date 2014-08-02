@@ -10,7 +10,7 @@ class Doctor < ActiveRecord::Base
          acts_as_liker
          acts_as_likeable 
              
-
+    has_many :messages, :dependent => :destroy 
 
          accepts_nested_attributes_for :answers 
 end
