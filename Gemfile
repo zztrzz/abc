@@ -29,12 +29,8 @@ gem 'spring',        group: :development
 
 
 #  payments
-
-gem "braintree"
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'simple-private-messages', '0.0.0', :git => 'https://github.com/jongilbraith/simple-private-messages.git'
-
-gem 'therubyracer', :platform => :ruby
+ 
+ 
 gem 'bootstrap-sass'
 
 gem 'socialization'
