@@ -16,7 +16,7 @@
 <!-- cevap table içinde resimle birlikte -->
 
           <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><span class="glyphicon glyphicon-info-sign"></span>
-            <% if answer.description? %><%= answer.description %> <%else%><%="" %><%end%></td></tr></table></li>
+            <% unless answer.description.nil? %><%= answer.description %> </td></tr></table></li>
 
 <!-- etiketler -->
 
