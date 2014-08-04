@@ -2,25 +2,25 @@
  
 <%= render 'layouts/leftnav' %>
  
-<div class="col-sm-6">
+<div class="col-sm-9">
 
 
 	<div class="panel panel-default">     
-  <div class="panel-heading col-md-12">
-      <div class="row">
-      
-       <div class="col-md-12" align="center">
-          <%= image_tag @doctor.image.url(:thumb), class: "resim" %></div>
-        </div>
-        <div class="row">
-         
-          <div class="col-md-12" align="center"><h2><%= @doctor.email %></h2><h6> Kardiyolog, İstanbul </h6></div>
-        
-       
-    </div>
+                                  <div class="panel-heading col-md-12">
+                                  <div class="row">
+                                  
+                                   <div class="col-md-12" align="center">
+                                      <%= image_tag @doctor.image.url(:thumb), class: "resim" %></div>
+                                    </div>
+                                    <div class="row">
+                                     
+                                      <div class="col-md-12" align="center"><h2><%= @doctor.email %></h2><h6> Kardiyolog, İstanbul </h6></div>
+                                    
+                                   
+                                </div>
 
-     <% if user_signed_in? %>
-        <% unless (@doctor.followed_by?(current_user) && @doctor.liked_by?(current_user) )%>
+         <% if user_signed_in? %>
+         <% unless (@doctor.followed_by?(current_user) && @doctor.liked_by?(current_user) )%>
 
               <ul class="list-group">
 
