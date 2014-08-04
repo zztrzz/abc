@@ -12,5 +12,7 @@ class Doctor < ActiveRecord::Base
              
     has_many :messages, :dependent => :destroy 
 
+    has_many :pins , :dependent => :destroy 
+
          accepts_nested_attributes_for :answers 
 end

@@ -20,8 +20,10 @@
         <% elsif doctor_signed_in?%>
           <%if current_doctor.email? %>
         <li><%= link_to ("Merhaba"+" "+current_doctor.email+"!"), edit_doctor_registration_path %></li>
+        <li> <%= link_to '+ Doktorlara Sor', new_pin_path %></li>
           <%else%>
           <li><%= link_to "Hesap Ayarları", edit_doctor_registration_path %></li>
+          
           <%end%>
         <li><%= link_to "Çıkış", destroy_doctor_session_path, method: :delete %></li>
          

@@ -25,9 +25,9 @@ class PinsController < ApplicationController
   def new
      
     if doctor_signed_in?
-      redirect_to pins_path, notice: "Doktorlar soru oluşturamıyor"
+      @pin=current_doctor.pins.build unless current_doctor.nil? 
     elsif user_signed_in?
-      @pin = current_user.pins.build
+      @pin = current_user.pins.build unless current_user.nil? 
      
     else
       redirect_to user_session_path, notice: "Önce giriş yapmalısınız!"
@@ -45,6 +45,9 @@ class PinsController < ApplicationController
   def create
     if user_signed_in?
     @pin = current_user.pins.build(pin_params) 
+
+  elsif doctor_signed_in? 
+    @pin = current_doctor.pins.build(pin_params)
   end
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.'
@@ -77,7 +80,9 @@ class PinsController < ApplicationController
 
    def correct_user
       if doctor_signed_in?
-        redirect_to pins_path, notice: "Bu işlemi yapmaya yetkiniz yok."
+        @pin = current_doctor.pins.find_by(id: params[:id])
+        redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil? 
+
       else
       @pin = current_user.pins.find_by(id: params[:id])
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil? 
