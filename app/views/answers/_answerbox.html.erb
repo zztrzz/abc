@@ -36,15 +36,20 @@
 
 <!-- user loginse ve cevap thank etmemişse diye thank you butonu-->
 
+
+
 <% if (user_signed_in? && !(answer.liked_by?(current_user))) %>
   <li class="list-group-item"><%= link_to "Thank", like_answer_path(answer), method: :post , :id=> "mylink" , :remote => true, :class => "btn btn-warning" %></li>
+  <li class="list-group-item"><h5 class="label label-default"><em><span id="agree"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>doctors agree</span></em></h5></li>
+
 
 
 <!-- user loginse ve cevap thank etmişse diye thanked butonu-->
 
 
-<% elsif (user_signed_in? && answer.liked_by?(current_user)) %>
-  <li class="list-group-item"><h4><span class="label label-warning">Thanked</span></h4></li>
+ <% elsif (user_signed_in? && answer.liked_by?(current_user)) %>
+   
+  <li class="list-group-item"><h5 class="label label-default"><em><span id="agree"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>doctors agree</span></em></h5></li>
 
 
 
@@ -70,18 +75,11 @@
 
 
 
-
-<!-- doktor login değilse veya user loginse kaç doktor agree olduğu bilgisi -->
-
-  <%else%>
-                <li class="list-group-item"><h5 class="label label-default"><em><span id="agree"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>doctors agree</span></em></h5></li>
-        <%end%>
+  <%end%>
       
       </ul>
     
-    
-  
       
-  <%end%>
+      <%end%>
   </div>
 </div>
