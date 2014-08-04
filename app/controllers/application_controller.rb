@@ -27,6 +27,8 @@ protected
    devise_parameter_sanitizer.for(:sign_up) << :gsm
    devise_parameter_sanitizer.for(:account_update) << :gsm
     devise_parameter_sanitizer.for(:account_update) << :email
+    devise_parameter_sanitizer.for(:account_update) << :image
+    devise_parameter_sanitizer.for(:sign_up) << :image
 
 
 

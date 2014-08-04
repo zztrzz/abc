@@ -27,7 +27,7 @@ private
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:doctor_id, :message_id)
+      params.require(:doctor).permit(:doctor_id, :message_id, :image)
     end
   
   def correct_use

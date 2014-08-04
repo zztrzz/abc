@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804105459) do
+ActiveRecord::Schema.define(version: 20140804125735) do
 
   create_table "answers", force: true do |t|
     t.string   "answer"
@@ -52,6 +52,10 @@ ActiveRecord::Schema.define(version: 20140804105459) do
     t.integer  "tckimlikno"
     t.string   "okulveyil"
     t.integer  "gsm"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true

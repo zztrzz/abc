@@ -5,10 +5,19 @@
 <div class="col-sm-6">
 
 
-	<div class="panel panel-info">
-
-		<div class="panel-heading"><h1 font-family="Arial"><span class="glyphicon glyphicon-user"></span><%= "  Zorluhan Zorlu" %></h1>
-      <h6>Kardiyolog, İstanbul</h6></div>
+	<div class="panel panel-default">     
+  <div class="panel-heading col-md-12">
+      <div class="row">
+      
+       <div class="col-md-12" align="center">
+          <%= image_tag @doctor.image.url(:thumb), class: "resim" %></div>
+        </div>
+        <div class="row">
+         
+          <div class="col-md-12" align="center"><h2><%= @doctor.email %></h2><h6> Kardiyolog, İstanbul </h6></div>
+        
+       
+    </div>
 		
 		<div class="panel-body"> 
  
