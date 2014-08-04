@@ -13,12 +13,13 @@
 
 <!-- soru -->
 <% if answer.pin.doctor_id.nil? %>
-          <li class="list-group-item"><h6><em><%= answer.pin.user.name %><%= " sordu" %></em></h6>
+          <li class="list-group-item"><h5><%= image_tag answer.pin.user.image.url(:thumb), class: "resim" %><%= "  "%><%= answer.pin.user.name %><%= " sordu..." %></h5>
           <h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
 <%end%>
+
 <% if answer.pin.user_id.nil? %>
 
-          <li class="list-group-item"><h6><em><%= answer.pin.doctor.email %><%= " sordu" %></em></h6>
+          <li class="list-group-item"><h5><%= image_tag answer.pin.doctor.image.url(:thumb), class: "resim" %><%= "  "%><%= answer.pin.doctor.email %><%= " sordu..." %></h5>
           <h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
 <%end%>
 <!-- cevap table içinde resimle birlikte -->
