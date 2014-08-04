@@ -12,13 +12,19 @@
           <%= answer.doctor.email if answer.doctor.email %> <%= link_to " cevapladı.", your_doctor_path(answer.doctor.id) %> </li></h6>
 
 <!-- soru -->
-           
-          <li class="list-group-item"><h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
+<% if answer.pin.doctor_id.nil? %>
+          <li class="list-group-item"><h6><em><%= answer.pin.user.name %><%= " sordu" %></em></h6>
+          <h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
+<%end%>
+<% if answer.pin.user_id.nil? %>
 
+          <li class="list-group-item"><h6><em><%= answer.pin.doctor.email %><%= " sordu" %></em></h6>
+          <h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
+<%end%>
 <!-- cevap table içinde resimle birlikte -->
 
-          <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><% if !(answer.description.nil?) %><h3><span class="glyphicon glyphicon-info-sign"></span>
-            <%= answer.description %> </h3><%end%></td></tr></table></li>
+          <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><% if !(answer.description.nil?) %><h4><span class="glyphicon glyphicon-info-sign"></span>
+            <%= answer.description %> </h4><%end%></td></tr></table></li>
 
 <!-- etiketler -->
 
