@@ -9,6 +9,17 @@ def show
 end
 
 
+def follow
+    @doctor= Doctor.find(params[:id])
+    current_user.follow!(@doctor) unless @doctor.nil? 
+end 
+
+def like
+    @doctor= Doctor.find(params[:id])
+    current_user.like!(@doctor) unless @doctor.nil? 
+end 
+
+
 private
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor

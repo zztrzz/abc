@@ -1,9 +1,11 @@
+ <% unless (user_signed_in? or doctor_signed_in?) %>
  
-<% unless (user_signed_in? or doctor_signed_in?) %>
+
  
 
           <div class="jumbotron">
              <div class="container">
+               
           <h1>Sağlığınıza yeni bir bakış</h1>
    
             <p>Sadece bir değil birden fazla görüş almak hayatınızı kurtarır. </p>
@@ -12,6 +14,7 @@
             </div>
 
 <%end%>
+
 <% if user_signed_in? %>
 <%= render 'layouts/leftnav' %>
 <div class="col-md-9">
@@ -22,7 +25,7 @@
     
     <% @pins.each do |pin| %>
         <div class="box">
-         <ul class="list-group">
+          <ul class="list-group">
             <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago" %>
     <%= pin.user.name if pin.user.name %><%= " "+"sordu." %></li></h6>
 
@@ -34,9 +37,9 @@
           
                 <div class="actions">
                   <li class="list-group-item">
-                    <%= link_to 'Show', pin %> 
-                    <%= link_to 'Edit', edit_pin_path(pin) %> 
-                    <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %> 
+                    <%= link_to 'Show', pin %>
+                    <%= link_to 'Edit', edit_pin_path(pin) %>
+                    <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
                   </li>
                 </div>
 
@@ -45,17 +48,19 @@
                   <li class="list-group-item"><%= link_to 'Answer',pin_path(pin) %> </li>
                   </div>
 
-
+           
           <% end %>
         </ul>
-    </div>
-    <%end%>
+         </div>
+    <% end%>
 
 
   </div>
 
   
 
+</div>
+</div>
 
     
  
@@ -64,8 +69,4 @@
  </div>
  
 
-</div>
-</div>
 
- 
- 

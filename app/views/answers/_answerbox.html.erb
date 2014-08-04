@@ -1,4 +1,6 @@
-<div class="col-md-7"> 
+
+<div class="box2 col-md-5"> 
+<div id="pins" class="transitions-enabled">
 
 <% @answers.each do |answer| %>
  
@@ -15,15 +17,15 @@
 
 <!-- cevap table içinde resimle birlikte -->
 
-          <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><% if !(answer.description.nil?) %><span class="glyphicon glyphicon-info-sign"></span>
-            <%= answer.description %> <%end%></td></tr></table></li>
+          <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><% if !(answer.description.nil?) %><h3><span class="glyphicon glyphicon-info-sign"></span>
+            <%= answer.description %> </h3><%end%></td></tr></table></li>
 
 <!-- etiketler -->
 
-          <li class="list-group-item">
+          <li class="list-group-item"><p>
               <% answer.topics.each do |topic| %>
                 <span class="label label-info"><%= topic.name %></span>
-              <% end %>
+              <% end %></p>
           </li>
 
 <!-- doktor loginse ve cevaba agree olmamışsa agree butonu ve altına kaç doktor agree olduğu bilgisi -->
@@ -44,13 +46,14 @@
 <!-- doktor login değilse veya user loginse kaç doktor agree olduğu bilgisi -->
 
                 <%else%>
-                <li class="list-group-item"><h5><em><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agree" %></em></h5></li>
+                <li class="list-group-item"><h5 class="label label-default"><em><span id="agree"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>doctors agree</span></em></h5></li>
         <%end%>
       
       </ul>
     
     
-   
+  
       
   <%end%>
   </div>
+</div>

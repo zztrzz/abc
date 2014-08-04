@@ -13,8 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-    
-
+     
   root "answers#index"
 
 resources :topics do
@@ -29,7 +28,17 @@ resources :topics do
     end
   end
 
-  
+  resources :doctors do
+    member do
+      post :follow
+    end
+  end
+
+  resources :doctors do
+    member do
+      post :like
+    end
+  end
  
 get 'doctors/:id', to: 'doctors#show', as: 'your_doctor'
 

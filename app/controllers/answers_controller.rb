@@ -28,6 +28,7 @@ class AnswersController < ApplicationController
 
     @answers= Answer.all
     @answer= Answer.find(params[:id])
+     
     
     if doctor_signed_in?
     current_doctor.like!(@answer)
@@ -67,16 +68,21 @@ class AnswersController < ApplicationController
   def create
     
     @answer= current_doctor.answers.build(answer_params)
-   
-
+    
+    
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
         
-      else
-        format.html { render :new }
+      elsif @answer.errors.any?
+        
+        format.html { redirect_to Pin.find_by(params[:id]), notice: 'Kaydedilemedi lütfen tekrar deneyin.'}
         format.json { render json: @answer.errors, status: :unprocessable_entity }
+        
+        else
+          format.html { render :new, notice: 'kaydedilmedi'}
+          format.json { render json: @answer.errors, status: :unprocessable_entity }
         
       end
     end

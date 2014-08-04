@@ -27,20 +27,22 @@
 
 <%= form_for(@answer) do |f| %>
   <% if @answer.errors.any? %>
+   <% redirect_to @pin %>
     <div id="error_explanation">
       <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
       <ul>
       <% @answer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+
       <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="input-group input-group-lg col-md-6">
-    <%= f.label "Cevap (Max 200 karakter)" %><br>
-    <%= f.text_area :answer, class: "form-control", rows: "4", maxlength: "200" %>
+    <%= f.label "Cevap (Max 150 karakter)" %><br>
+    <%= f.text_area :answer, class: "form-control", rows: "4", maxlength: "200", cols: "300" %>
   </div>
 
  <%end%>
@@ -56,7 +58,6 @@
 
   <br>
   <div class="actions">
-
-    <%= f.submit 'Sorunu Sor' %>
+    <%= f.submit 'Sorunu Sor' , class: "btn btn-info" %>
   </div>
 <% end %>

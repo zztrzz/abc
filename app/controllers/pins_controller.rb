@@ -12,7 +12,7 @@ class PinsController < ApplicationController
     # end
     #  @pins = @search.results
      
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page])
+    @pins = Pin.all.order("created_at ASC").paginate(:page => params[:page])
  end
     
 

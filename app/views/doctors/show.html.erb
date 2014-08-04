@@ -5,27 +5,63 @@
 <div class="col-sm-6">
 
 
-	<div class="panel panel-default">
+	<div class="panel panel-info">
 
-		<div class="panel-heading"><h1>Doktor'a Özel Mesaj At</h1></div>
+		<div class="panel-heading"><h1 font-family="Arial"><span class="glyphicon glyphicon-user"></span><%= "  Zorluhan Zorlu" %></h1>
+      <h6>Kardiyolog, İstanbul</h6></div>
 		
-		<div class="panel-body">
+		<div class="panel-body"> 
  
      <% if user_signed_in? %>
+        <% unless (@doctor.followed_by?(current_user) && @doctor.liked_by?(current_user) )%>
 
-		  <ul class="list-group">
-      <li class="list-group-item">Doktor İsim: <%= @doctor.name %></li>  
-		 	<li class="list-group-item">Doktor Okul: <%= @doctor.okulveyil %></li>   
-  	  <li class="list-group-item">Ünvanı:<%= @doctor.aop %></li>   
-  	 
+              <ul class="list-group">
+              <table>
+                <tr>
+                  <td>
+                <%= link_to "Follow", follow_doctor_path(@doctor), method: :post , :class => "btn btn-default glyphicon glyphicon-ok-sign" , :remote => true, :id=> "mylink" %></td>
+
+                 <td> <%= link_to "Recommend", like_doctor_path(@doctor), method: :post , :class => "btn btn-success glyphicon glyphicon-star" , :remote => true, :id=> "mylink2" %></td>
+               </tr>
+              </table>
+              </ul>
+      
+         <% end %>
+
+           
+
+                		  <ul class="list-group">  
+                		 	<li class="list-group-item"><strong>Uzmanlık</strong></li>   
+                  	  <li class="list-group-item"><%= @doctor.email %></li>   
+                  	  </ul>
+
+                      <ul class="list-group">  
+                      <li class="list-group-item"><strong>Okulum</strong></li>   
+                      <li class="list-group-item">Uzmanlık:<%= @doctor.aop %></li>   
+                      </ul>
+
+                      <ul class="list-group">  
+                      <li class="list-group-item"><strong>Uzmanlık Alanım</strong></li>   
+                      <li class="list-group-item">Uzmanlık:<%= @doctor.aop %></li>   
+                      </ul>
+
+                      <ul class="list-group">  
+                      <li class="list-group-item"><strong>Kaç senedir çalışıyorum?</strong></li>   
+                      <li class="list-group-item">Uzmanlık:<%= @doctor.aop %></li>   
+                      </ul>
+
+                      <ul class="list-group">  
+                      <li class="list-group-item"><strong>Ödüllerim</strong></li>   
+                      <li class="list-group-item">Uzmanlık:<%= @doctor.aop %></li>   
+                      </ul>
   		 
     
-   				<% end %>
+   			
    		 
  
-  		    </li>
   		    
-        </ul>
+  		    
+       
 
         <%else%>
         <%= link_to "Mesaj" %>

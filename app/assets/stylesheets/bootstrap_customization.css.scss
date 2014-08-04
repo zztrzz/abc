@@ -1,10 +1,12 @@
- 
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+
 $body-bg: #ecf0f1;
-$font-family-sans-serif:                'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   
-$navbar-default-bg:                          white;
+$navbar-default-bg: white;
  
-$brand-primary:                                    #c0392b;
+$brand-primary: #c0392b;
  
 @import 'bootstrap';
 
@@ -16,11 +18,11 @@ $brand-primary:                                    #c0392b;
 .jumbotron
   {
    
-  	background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeTipTaps.jpg?1375029698');
-  	
-  	background-image-opacity: 0.4;
-  	height: 500px;
-  }   
+   background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeTipTaps.jpg?1375029698');
+  
+   background-image-opacity: 0.4;
+   height: 500px;
+  }
   
 .kayit
 {
@@ -72,6 +74,10 @@ background-image: url('https://edc1.healthtap.com/cdn/j11111/imgs/bgs/imgHomeAns
   }
 }
 
+#head-video
+{
+  z-index: -1;
+}
 
 td {
     padding: 5px;
@@ -79,7 +85,7 @@ td {
 
 #agreement
 {
-	color: blue;
-	font-family: lato;
-	font-size: 9px;
+color: blue;
+font-family: lato;
+font-size: 9px;
 }

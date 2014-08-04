@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
  
 
 <div class="col-md-12">
@@ -18,6 +16,7 @@
 
 
       <%= form_for @pin.answers.new do |f| %>
+       
              <p><%= "Pin id:" %><%= @pin.id %>
              <%= "Doctor Email:" %><%= current_doctor.email if doctor_signed_in? %></p>
              <%= f.hidden_field :pin_id, :value => @pin.id %>
