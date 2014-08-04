@@ -11,14 +11,19 @@
 
 
 <div class="input-group input-group-lg col-md-12">
-      <% if @pin.user != current_user %>
-      <% if doctor_signed_in? %>
 
+
+      
+      <% if doctor_signed_in? %>
+      <% if (@pin.user != current_user || @pin.doctor != current_doctor) %>
 
       <%= form_for @pin.answers.new do |f| %>
        
-             <p><%= "Pin id:" %><%= @pin.id %>
-             <%= "Doctor Email:" %><%= current_doctor.email if doctor_signed_in? %></p>
+             <p><%= "Pin id:" %><%= @pin.id %><br>
+              <%= "Pin doctor_id  " %><%= @pin.doctor_id %><br>
+              <%= "Pin user_id  " %><%= @pin.user_id %><br>
+             <%= "Doctor Email:" %><%= current_doctor.email %><br>
+             <%= "Current doctor id  " %><%= current_doctor.id %></p>
              <%= f.hidden_field :pin_id, :value => @pin.id %>
              <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
 
