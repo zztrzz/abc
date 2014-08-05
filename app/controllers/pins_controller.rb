@@ -26,10 +26,15 @@ class PinsController < ApplicationController
   # GET /pins/1
   # GET /pins/1.json
   def show
-   @pin=Pin.find(params[:id])
-   @answers=Pin.find(params[:id]).answers
-   @docanswer=Pin.find(params[:id]).answers.find_by(doctor_id: current_doctor.id) 
-    
+    if @pin.nil?
+        redirect_to :root
+    end 
+   @pin=Pin.find(params[:id]) unless @pin.nil? 
+   @answers=Pin.find(params[:id]).answers unless @pin.nil?
+
+   if doctor_signed_in? 
+     @docanswer=Pin.find(params[:id]).answers.find_by(doctor_id: current_doctor.id) 
+   end
   end
 
   # GET /pins/new
@@ -105,8 +110,12 @@ class PinsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
+      
+
       @pin = Pin.find(params[:id])  
     end
+
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params

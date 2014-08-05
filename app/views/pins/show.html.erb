@@ -16,12 +16,15 @@
 
   <div class="panel-body">
 	 
-    <%= @pin.description %> 
-</div>
-</div>
-</div>
 
-<div class="row" align="right">
+    <%= @pin.description %> 
+   
+  </div>
+</div>
+</div>
+ 
+
+<div class="row">
 <%= link_to 'Edit', edit_pin_path(@pin) if (@pin.user==current_user) %> 
 <%= link_to 'Tüm Sorular', pins_path %> 
 </div>
@@ -39,7 +42,7 @@
 </div>
 
 <div class="col-md-5">
-  <% if doctor_signed_in? %>
+  <% if doctor_signed_in? && (@pin.doctor!=current_doctor) %>
      <% a=0 %>
      <% @pin.answers.each do |x| %>
       <% if x.doctor==current_doctor %>
@@ -48,7 +51,8 @@
       <%end%>
    <% if a>=1 %>
    <%= render 'pins/cevapedit' %>
-   <% else %>
+   <% elsif%>
+
   <%= render 'pins/cevapla' %>
   <%end%>
   <%end%>

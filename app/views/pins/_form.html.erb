@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
- <%if user_signed_in? %>
+ <%if user_signed_in? || (doctor_signed_in? && @pin.user.nil?) %>
 
   <div class="input-group input-group-lg col-md-6" >
      
@@ -23,9 +23,9 @@
    
   </div>
   
-  <%elsif doctor_signed_in? %>
+  <%elsif (doctor_signed_in? && @pin.doctor.nil?) %>
 
-<%= form_for(@answer) do |f| %>
+  <%= form_for(@answer) do |f| %>
   <% if @answer.errors.any? %>
    <% redirect_to @pin %>
     <div id="error_explanation">
@@ -51,9 +51,6 @@
     <%= f.submit 'Cevap Ver' %>
   </div>
 <% end %>
-
-
-
 
 
   <br>

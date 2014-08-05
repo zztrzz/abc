@@ -37,7 +37,7 @@
             <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago " %><%= pin.user.name if pin.user.name? %><%= " "+"sordu." %></li></h6>
 
 
-            <li class="list-group-item"><h3><%= pin.description %></h3> </li>
+            <li class="list-group-item"><h3><span class="prela"><%= pin.description %></span></h3> </li>
         
 
             <% if pin.user == current_user %>
@@ -72,7 +72,7 @@
     </span><%= " "%><%= pin.doctor.email if pin.doctor.email? %><%= " sordu." %></li></h6><%end%>
 
 
-            <li class="list-group-item"><h3><%= pin.description %></h3> </li>
+            <li class="list-group-item"><h3><span class="prela"><%= pin.description %></span></h3> </li>
              
 
                             <% if pin.doctor == current_doctor %>

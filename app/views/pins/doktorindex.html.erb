@@ -11,7 +11,13 @@
             <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago " %><%= pin.doctor.email if pin.doctor.email? %><%= " "+"sordu." %></li></h6>
 
 
-            <li class="list-group-item"><h3><%= pin.description %></h3> </li>
+            <li class="list-group-item"><h3><span class="prela"><%= pin.description %></span></h3> </li>
+
+              <% unless (pin.doctor==current_doctor) %>
+              <div class="actions">
+              <li class="list-group-item"><%= link_to 'Answer',pin_path(pin) %> </li>
+              </div>
+              <%end%>
         
 
             <% if pin.doctor == current_doctor %>
