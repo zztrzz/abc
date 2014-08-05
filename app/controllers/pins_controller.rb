@@ -26,6 +26,7 @@ class PinsController < ApplicationController
   # GET /pins/1
   # GET /pins/1.json
   def show
+   @pin=Pin.find(params[:id])
    @answers=Pin.find(params[:id]).answers
    @docanswer=Pin.find(params[:id]).answers.find_by(doctor_id: current_doctor.id) 
     
