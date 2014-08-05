@@ -27,6 +27,8 @@ class PinsController < ApplicationController
   # GET /pins/1.json
   def show
    @answers=Pin.find(params[:id]).answers
+   @docanswer=Pin.find(params[:id]).answers.find_by(doctor_id: current_doctor.id) 
+    
   end
 
   # GET /pins/new
@@ -87,6 +89,7 @@ class PinsController < ApplicationController
  
 
    def correct_user
+
       if doctor_signed_in?
         @pin = current_doctor.pins.find_by(id: params[:id])
         redirect_to pins_path, notice: "Bu işlem için yetkiniz yok" if @pin.nil? 

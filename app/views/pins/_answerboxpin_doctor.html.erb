@@ -8,7 +8,7 @@
   <li class="list-group-item">
    <h4><% unless answer.doctor.image_file_size.nil? %><%= image_tag answer.doctor.image.url(:thumb), class: "resimalt" %><%= "  "%><%end%><%= answer.doctor.email %><%= " cevapladı..." %></h4></li>
    <li class="list-group-item">
-     <%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " onayladı" %></li>
+     <%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></li>
  
 
    <li class="list-group-item"> <% unless answer.image_file_size.nil? %>
@@ -16,7 +16,7 @@
      <%= answer.description %></li>
      
 <% if (answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>
- <li class="list-group-item"><%= link_to "Agree", like_answer_path(answer), method: :post , :class => "btn btn-default" , :remote => true, :id=> "mylink" %></li>
+ <li class="list-group-item"><%= link_to "Onayla", like_answer_path(answer), method: :post , :class => "btn btn-default" , :remote => true, :id=> "mylink" %></li>
  <%end%>
      
   </ul>

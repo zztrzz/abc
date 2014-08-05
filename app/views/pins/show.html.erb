@@ -5,7 +5,7 @@
 <div class="row">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h5><%= image_tag @pin.user.image.url(:thumb), class: "resimalt" %><%= "  "%>
+    <h5><%= image_tag @pin.user.image.url(:thumb), class: "resim" %><%= "  "%>
       <%= @pin.user.name %><%= " sordu..." %></h5></div>
   <div class="panel-body">
 	 
@@ -14,7 +14,7 @@
 </div>
 </div>
 
-<div class="row">
+<div class="row" align="right">
 <%= link_to 'Edit', edit_pin_path(@pin) if (@pin.user==current_user) %> 
 <%= link_to 'Tüm Sorular', pins_path %> 
 </div>
@@ -32,9 +32,20 @@
 </div>
 
 <div class="col-md-5">
-<%if doctor_signed_in? %>
-<%= render 'pins/cevapla' %>
-<%end%>
+  <% if doctor_signed_in? %>
+     <% a=0 %>
+     <% @pin.answers.each do |x| %>
+      <% if x.doctor==current_doctor %>
+      <% a=a+1 %>
+      <% end %>
+      <%end%>
+   <% if a>=1 %>
+   <%= render 'pins/cevapedit' %>
+   <% else %>
+  <%= render 'pins/cevapla' %>
+  <%end%>
+  <%end%>
+ 
 </div>
 
  

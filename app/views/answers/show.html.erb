@@ -7,6 +7,7 @@
  <div class="box2 col-md-10">
 		
 <ul class="list-group">
+
 		<li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(@answer.created_at) + " ago" %>
 		<%= @answer.doctor.email if @answer.doctor.email%><%= " "+"cevapladı." %></li></h6>
 		 
@@ -39,8 +40,10 @@
 
 
 <% if @answer.doctor == current_doctor %>
-<%= link_to 'Edit', edit_answer_path(@answer) %> 
-<%= link_to 'Back', answers_path %>
+ 
+<%= link_to 'Düzenle', edit_answer_path(@answer) %> <br>
+<%= link_to 'Tüm cevaplara dön', answers_path %>
+ 
 <%end%>
 
 <% end %>

@@ -1,19 +1,20 @@
 
-      
+      <!-- eğer doktor soruyu cevapladıysa edit edebilmeli cevaplamadıysa formla cevaplamalı -->
+
+
       <div class="input-group input-group-lg">
-
-
-      <% if (@pin.user != current_user || @pin.doctor != current_doctor) %>
-      <div class="panel panel-default">
+ 
+        <div class="panel panel-success">
+        <div class="panel-heading"><div class="panel-title">Şimdi Cevapla</div></div>
         <div class="panel-body">
-      <%= form_for @pin.answers.new do |f| %>
+     
+            <%= form_for @pin.answers.new do |f| %>
        
-           
              
              <%= f.hidden_field :pin_id, :value => @pin.id %>
              <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
 
-             <p><%= f.label "Cevapla!" %><br>
+             <p><%= f.label " " %><br>
              <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "200"  %>
              <span class="help-block">En fazla 200 karakter girebilirsiniz</span> 
             </p>
@@ -56,6 +57,6 @@
       
       <%end%>
     </div></div>
-      <%end%>
+      
      </div>
  
