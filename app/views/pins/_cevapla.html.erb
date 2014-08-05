@@ -1,0 +1,61 @@
+
+      
+      <div class="input-group input-group-lg">
+
+
+      <% if (@pin.user != current_user || @pin.doctor != current_doctor) %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+      <%= form_for @pin.answers.new do |f| %>
+       
+           
+             
+             <%= f.hidden_field :pin_id, :value => @pin.id %>
+             <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
+
+             <p><%= f.label "Cevapla!" %><br>
+             <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "200"  %>
+             <span class="help-block">En fazla 200 karakter girebilirsiniz</span> 
+            </p>
+             <p>
+             <%= f.label "Resim Yükle" %> 
+             <%= f.file_field :image%></p>
+             <div>
+                                   <%= f.fields_for :topics,f.object.topics.new do |x| %>
+                                   <%= x.label :etiket %>
+                                   <%= x.text_field :name%>
+                                   <% x.hidden_field :answer_id, :value => f.object.id %>
+                                   <%end%><br>
+
+                                    <%= f.fields_for :topics,f.object.topics.new do |x| %>
+                                     <%= x.label :etiket %>
+                                     <%= x.text_field :name%>
+                                     <% x.hidden_field :answer_id, :value => f.object.id %>
+                                     <%end%><br>
+
+                                    <%= f.fields_for :topics,f.object.topics.new do |x| %>
+                                     <%= x.label :etiket %>
+                                     <%= x.text_field :name%>
+                                     <% x.hidden_field :answer_id, :value => f.object.id %>
+                                     <%end%><br>
+
+                                     <%= f.fields_for :topics,f.object.topics.new do |x| %>
+                                     <%= x.label :etiket %>
+                                     <%= x.text_field :name%>
+                                     <% x.hidden_field :answer_id, :value => f.object.id %>
+                                     <%end%><br>
+ 
+
+               </div>
+ 
+              <div class="actions">
+                  <br>
+                  <%= f.submit "Cevapla", class: 'btn btn-success' %>
+              </div>
+
+      
+      <%end%>
+    </div></div>
+      <%end%>
+     </div>
+ 

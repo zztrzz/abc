@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :answers
 
+  get "pins/doktorindex" => "pins#doktorindex", :as => "doktorindex"
+
   resources :pins
 
 
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
 
      
   root "answers#index"
+
+  
 
 resources :topics do
     member do
@@ -39,14 +43,16 @@ resources :topics do
       post :like
     end
   end
+
  
+
+  
+
 get 'doctors/:id', to: 'doctors#show', as: 'your_doctor'
 
 get 'users/:id', to: 'users#show', as: 'your_user'
 
-
-  
-
+ 
 
    
   # The priority is based upon order of creation: first created -> highest priority.

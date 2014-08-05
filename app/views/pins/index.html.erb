@@ -1,8 +1,6 @@
  <% unless (user_signed_in? or doctor_signed_in?) %>
  
 
- 
-
           <div class="jumbotron">
              <div class="container">
                
@@ -22,9 +20,13 @@
 
 <!-- user view for pins -->
 
+<%if doctor_signed_in?%>
+    <div align="center"><div class="label label-info" align="center"><%= link_to "Doktor Soruları için tıklayın", doktorindex_path %></div></div>
 
+    <%end%>
  
   <div id="pins" class="transitions-enabled">
+
     
   <% @pins.each do |pin| %>
  

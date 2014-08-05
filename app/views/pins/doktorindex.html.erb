@@ -1,0 +1,30 @@
+
+ <div align="center"><div class="label label-info" align="center"><%= link_to "Kullanıcı Soruları için tıklayın", pins_path %></div></div>
+  <div id="pins" class="transitions-enabled">
+    
+  <% @pins.each do |pin| %>
+ 
+     
+      <div class="box">
+      <ul class="list-group">
+            
+            <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago " %><%= pin.doctor.email if pin.doctor.email? %><%= " "+"sordu." %></li></h6>
+
+
+            <li class="list-group-item"><h3><%= pin.description %></h3> </li>
+        
+
+            <% if pin.doctor == current_doctor %>
+                      
+            <div class="actions">
+            <li class="list-group-item">
+                                <%= link_to 'Show', pin %>
+                                <%= link_to 'Edit', edit_pin_path(pin) %>
+                                <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+            </div>
+
+            <%end%>
+      </ul>
+      </div>
+      <%end%>

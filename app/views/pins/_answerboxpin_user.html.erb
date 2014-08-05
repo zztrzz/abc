@@ -1,0 +1,26 @@
+
+ <div class="col-md-6">
+<% @answers.each do |answer| %>
+ 
+ 
+<ul class="list-group">
+
+  <li class="list-group-item">
+   <h4><% unless answer.doctor.image_file_size.nil? %><%= image_tag answer.doctor.image.url(:thumb), class: "resimalt" %><%= "  "%><%end%><%= answer.doctor.email %><%= " cevapladı..." %></h4></li>
+   <li class="list-group-item">
+     <%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " onayladı" %></li>
+ 
+
+   <li class="list-group-item"> <% unless answer.image_file_size.nil? %>
+   <%= image_tag answer.image.url(:medium)%><%end%>
+     <%= answer.description %></li>
+
+   <% if !(answer.liked_by?(current_user)) %>
+   <li class="list-group-item"><%= link_to "Thank", like_answer_path(answer), method: :post , :id=> "mylink2" , :remote => true, :class => "btn btn-warning" %></li> 
+   <%end%>
+
+     
+  </ul>
+ 
+  <% end %>
+ </div>

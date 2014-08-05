@@ -1,79 +1,47 @@
  
-
-<div class="col-md-12">
-
-
-	<ul class="list-group">
-		<li class="list-group-item"> Soru </li>
-    <li class="list-group-item"><% if @pin.image.file? %><%= image_tag @pin.image.url(:medium)%><%else%><%= "..."%><%end%></li>
-    <li class="list-group-item"> <%= @pin.description %></li>
-  </ul>
-
-
-<div class="input-group input-group-lg col-md-12">
-
-
-      
-      <% if doctor_signed_in? %>
-      <% if (@pin.user != current_user || @pin.doctor != current_doctor) %>
-
-      <%= form_for @pin.answers.new do |f| %>
-       
-             <p><%= "Pin id:" %><%= @pin.id %><br>
-              <%= "Pin doctor_id  " %><%= @pin.doctor_id %><br>
-              <%= "Pin user_id  " %><%= @pin.user_id %><br>
-             <%= "Doctor Email:" %><%= current_doctor.email %><br>
-             <%= "Current doctor id  " %><%= current_doctor.id %></p>
-             <%= f.hidden_field :pin_id, :value => @pin.id %>
-             <%= f.hidden_field :doctor_id, :value => current_doctor.id %>
-
-             <p><%= f.label "Cevap" %><br>
-             <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "200"  %>
-             <span class="help-block">En fazla 200 karakter girebilirsiniz</span> 
-            </p>
-             <p>
-             <%= f.label "Resim Yükle" %> 
-             <%= f.file_field :image%></p>
-             <p>
-                                   <%= f.fields_for :topics,f.object.topics.new do |x| %>
-                                   <%= x.label :etiket %>
-                                   <%= x.text_field :name%>
-                                   <% x.hidden_field :answer_id, :value => f.object.id %>
-                                   <%end%>
-
-                                    <%= f.fields_for :topics,f.object.topics.new do |x| %>
-                                     <%= x.label :etiket %>
-                                     <%= x.text_field :name%>
-                                     <% x.hidden_field :answer_id, :value => f.object.id %>
-                                     <%end%>
-
-                                    <%= f.fields_for :topics,f.object.topics.new do |x| %>
-                                     <%= x.label :etiket %>
-                                     <%= x.text_field :name%>
-                                     <% x.hidden_field :answer_id, :value => f.object.id %>
-                                     <%end%>
-
-                                     <%= f.fields_for :topics,f.object.topics.new do |x| %>
-                                     <%= x.label :etiket %>
-                                     <%= x.text_field :name%>
-                                     <% x.hidden_field :answer_id, :value => f.object.id %>
-                                     <%end%>
  
 
-               </p>
- 
-              <div class="actions">
-                  <br>
-                  <%= f.submit "Cevapla", class: 'btn btn-success' %>
-              </div>
-
-      
-      <%end%>
-      <%end%>
-      <%end%>
+<div class="col-md-7">
+<div class="row">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5><%= image_tag @pin.user.image.url(:thumb), class: "resimalt" %><%= "  "%>
+      <%= @pin.user.name %><%= " sordu..." %></h5></div>
+  <div class="panel-body">
+	 
+    <%= @pin.description %> 
 </div>
 </div>
+</div>
+
+<div class="row">
+<%= link_to 'Edit', edit_pin_path(@pin) if (@pin.user==current_user) %> 
+<%= link_to 'Tüm Sorular', pins_path %> 
+</div>
+
+
+ <div class="row">
+<% if user_signed_in? %>
+<%= render 'pins/answerboxpin_user' %>
+<% elsif doctor_signed_in? %>
+ <%= render 'pins/answerboxpin_doctor' %>
+ <%end%>
+ </div>
+
+ 
+</div>
+
+<div class="col-md-5">
+<%if doctor_signed_in? %>
+<%= render 'pins/cevapla' %>
+<%end%>
+</div>
+
  
  
-<%= link_to 'Edit', edit_pin_path(@pin) %> |
-<%= link_to 'Back', pins_path %>
+
+
+
+
+
+

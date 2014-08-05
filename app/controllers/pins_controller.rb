@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_pin, only: [:show, :edit, :update, :destroy] 
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /pins
@@ -16,10 +17,16 @@ class PinsController < ApplicationController
  end
     
 
+    def doktorindex
+
+     @pins = Pin.where(user_id: nil)
+
+    end 
+
   # GET /pins/1
   # GET /pins/1.json
   def show
-   
+   @answers=Pin.find(params[:id]).answers
   end
 
   # GET /pins/new
@@ -82,16 +89,19 @@ class PinsController < ApplicationController
    def correct_user
       if doctor_signed_in?
         @pin = current_doctor.pins.find_by(id: params[:id])
-        redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil? 
+        redirect_to pins_path, notice: "Bu işlem için yetkiniz yok" if @pin.nil? 
 
       else
-      @pin = current_user.pins.find_by(id: params[:id])
-      redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil? 
+      @pin = current_user.pins.find_by(id: params[:id]) if user_signed_in?
+      redirect_to pins_path, notice: "Bu işlem için yetkiniz yok." if @pin.nil? 
+
+
+        
       end
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
-      @pin = Pin.find(params[:id])
+      @pin = Pin.find(params[:id])  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

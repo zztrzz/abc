@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
 	before_action :set_doctor, only: [:show, :edit, :update, :destroy]
-	before_action :correct_use, only: [:edit, :update, :destroy, :show]
+	before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
 def show
    @doctor= Doctor.find_by(id: params[:id])
@@ -30,7 +30,7 @@ private
       params.require(:doctor).permit(:doctor_id, :message_id, :image)
     end
   
-  def correct_use
+  def correct_user
 
       if (user_signed_in? || doctor_signed_in?)
         @doctor= Doctor.find_by(id: params[:id])
