@@ -5,9 +5,10 @@
 <div class="row">
 <div class="panel panel-default">
   <div class="panel-heading">
+    <h6 class="pull-right"><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(@pin.created_at) + " ago " %></h6>
     <% if @pin.doctor.nil? %>
-    <h5><%= image_tag @pin.user.image.url(:thumb), class: "resim"   %><%= "  "%>
-      <%= @pin.user.name %><%= " sordu..." %></h5></div>
+    <h4><%= image_tag @pin.user.image.url(:thumb), class: "resim"   %><%= "  "%>
+      <%= @pin.user.name %><%= " sordu..." %></h4></div>
       <% elsif @pin.user.nil? %>
 <h5><%= image_tag @pin.doctor.image.url(:thumb), class: "resim"   %><%= "  "%>
       <%= @pin.doctor.name %><%= " sordu..." %></h5></div>
