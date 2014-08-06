@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
@@ -42,14 +44,13 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'imagesLoaded_rails'
 
 
-
 gem 'masonry-rails', '~> 0.2.0'
  
- gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap'
 
- gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate', '~> 3.0.5'
 
- gem 'aws-sdk'
+gem 'aws-sdk'
 
   
 
@@ -59,11 +60,11 @@ group :development, :test do
 end
 
 
-
 group :production do
-     gem 'pg'
+     gem 'pg', '~> 0.17.1'
      gem 'rails_12factor'
 end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
