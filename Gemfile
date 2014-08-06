@@ -52,6 +52,7 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'aws-sdk'
 
+ gem 'filepicker-rails'
 
 
 group :development, :test do
