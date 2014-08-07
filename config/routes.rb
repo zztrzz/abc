@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
  
 
+  resources :photos
+
   resources :answers
 
   get "pins/doktorindex" => "pins#doktorindex", :as => "doktorindex"
