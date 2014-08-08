@@ -14,21 +14,33 @@
                                     </div>
                                     <div class="row">
                                      
-                                      <div class="col-md-12" align="center"><h2><%= @doctor.email %></h2><h6> Kardiyolog, İstanbul </h6></div>
+                                      <div class="col-md-12" align="center"><h2><%= @doctor.email %></h2><h6> Kardiyolog, İstanbul </h6></div></div>
+
+                                      <div class="row">
+                                      <div class="col-md-12 takip" align="center">
+
+                                      <%= Like.select("liker_id").where(likeable_id: @doctor.id, likeable_type: "Doctor").distinct.count %><%= "kişi takip ediyor" %></div></div>
+
                                     
                                    
-                                </div>
+                                        
 
          <% if user_signed_in? %>
          <% unless (@doctor.followed_by?(current_user) && @doctor.liked_by?(current_user) )%>
-
-              <ul class="list-group">
-
+               <ul class="list-group">
                <div class="row">
+               
                 <div class="col-md-12" align="center">
                 <%= link_to "Follow", follow_doctor_path(@doctor), method: :post , :class => "btn btn-default glyphicon glyphicon-ok-sign" , :remote => true, :id=> "mylink" %>
-
                  <%= link_to "Recommend", like_doctor_path(@doctor), method: :post , :class => "btn btn-success glyphicon glyphicon-star" , :remote => true, :id=> "mylink2" %> </div></div>
+
+                <div class="row">
+                  <div> 
+
+                   
+
+
+                  </div>
                
               </ul>
       
