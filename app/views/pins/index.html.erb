@@ -1,5 +1,9 @@
+
+
+
+
  <% unless (user_signed_in? or doctor_signed_in?) %>
- 
+
 
           <div class="jumbotron">
              <div class="container">
@@ -22,6 +26,7 @@
 
 <%if doctor_signed_in?%>
     <div align="center"><div class="label label-info" align="center"><%= link_to "Doktor Soruları için tıklayın", doktorindex_path %></div></div>
+    <div class="glyphicon glyphicon-login"></div>
 
     <%end%>
  

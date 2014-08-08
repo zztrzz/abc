@@ -1,39 +1,14 @@
  
- #pins
- { 
- margin: 0 auto ;
+ #pins { margin: 0 auto ;}
 
- }
+.box { width: 214px; }
 
-.box {
- 
-  width: 214px;
- 
- }
+
+.box img { width: 100%; }
 
  
+ .resim { width: 75px; height: auto; border-radius: 80px;}
 
+ .resimalt{ width: 40px; height: auto; border-radius: 80px; }
 
-.box img {
-  width: 100%;
-}
-
- 
- .resim
- {
-width: 75px;
-height: auto;
-border-radius: 80px;
- }
-
- .resimalt
- {
-width: 40px;
-height: auto;
-border-radius: 80px;
- }
-
- .prela
- {
-word-wrap: break-word;
- }
+ .prela { word-wrap: break-word;}

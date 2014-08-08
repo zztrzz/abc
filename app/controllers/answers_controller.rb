@@ -42,6 +42,7 @@ class AnswersController < ApplicationController
 
   def show
     @answer = Answer.find_by_id(params[:id])
+   
     redirect_to answers_path, notice: "Böyle bir cevap yok" if @answer.nil?
     redirect_to root_path, notice: "Giriş yapınız" unless (user_signed_in?  or doctor_signed_in?)
      
@@ -62,6 +63,7 @@ class AnswersController < ApplicationController
   # GET /answers/1/edit
   def edit
   end
+
 
   # POST /answers
   # POST /answers.json
@@ -128,6 +130,6 @@ def correct_doctor
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:description, :pin_id, :image, :doctor_id, :user_id, topics_attributes: [:name])
+      params.require(:answer).permit(:description, :pin_id, :doctor_id, :user_id, :photo_id, topics_attributes: [:name])
     end
 end

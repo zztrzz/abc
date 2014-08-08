@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807132457) do
+ActiveRecord::Schema.define(version: 20140808091127) do
 
   create_table "answers", force: true do |t|
     t.string   "answer"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140807132457) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "doctor_id"
+    t.integer  "photo_id"
   end
 
   add_index "answers", ["doctor_id"], name: "index_answers_on_doctor_id"
@@ -102,6 +103,8 @@ ActiveRecord::Schema.define(version: 20140807132457) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "answer_id"
+    t.integer  "image_type"
   end
 
   create_table "pins", force: true do |t|

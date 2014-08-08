@@ -20,8 +20,11 @@
             </p>
              <p>
              <%= f.label "Resim Yükle" %> 
-             <%= f.file_field :image%></p>
-             <div>
+             
+              <div class="checkcontainer">
+             <%= f.collection_radio_buttons(:photo_id, Photo.all, :id, :image_show)   %></div>   
+ 
+             <div class="panel-footer">
                                    <%= f.fields_for :topics,f.object.topics.new do |x| %>
                                    <%= x.label :etiket %>
                                    <%= x.text_field :name%>

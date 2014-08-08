@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   devise_for :users
 
      
-  root "answers#index"
+  root "pins#index"
 
   
 

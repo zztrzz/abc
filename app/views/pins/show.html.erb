@@ -1,6 +1,6 @@
  
 
-<div class="col-md-7">
+<div class="col-md-6">
 <div class="row">
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -29,19 +29,7 @@
 <%= link_to 'Tüm Sorular', pins_path %> 
 </div>
 
-
- <div class="row">
-<% if user_signed_in? %>
-<%= render 'pins/answerboxpin_user' %>
-<% elsif doctor_signed_in? %>
- <%= render 'pins/answerboxpin_doctor' %>
- <%end%>
- </div>
-
- 
-</div>
-
-<div class="col-md-5">
+<div class="row">
   <% if doctor_signed_in? && (@pin.doctor!=current_doctor) %>
      <% a=0 %>
      <% @pin.answers.each do |x| %>
@@ -58,6 +46,19 @@
   <%end%>
  
 </div>
+
+ <div class="row">
+<% if user_signed_in? %>
+<%= render 'pins/answerboxpin_user' %>
+<% elsif doctor_signed_in? %>
+ <%= render 'pins/answerboxpin_doctor' %>
+ <%end%>
+ </div>
+
+ 
+</div>
+
+
 
  
  

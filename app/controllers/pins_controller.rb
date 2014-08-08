@@ -31,6 +31,7 @@ class PinsController < ApplicationController
     end 
    @pin=Pin.find(params[:id]) unless @pin.nil? 
    @answers=Pin.find(params[:id]).answers unless @pin.nil?
+   @photos=Photo.all 
 
    if doctor_signed_in? 
      @docanswer=Pin.find(params[:id]).answers.find_by(doctor_id: current_doctor.id) 

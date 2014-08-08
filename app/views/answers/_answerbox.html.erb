@@ -14,17 +14,17 @@
 <!-- soru -->
 <% if answer.pin.doctor_id.nil? %>
           <li class="list-group-item"><h5><%= image_tag answer.pin.user.image.url(:thumb), class: "resimalt" %><%= "  "%><%= answer.pin.user.name %><%= " sordu..." %></h5>
-          <h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
+          <h2 class="prela"><em><%= link_to(answer.pin.description, answer.pin, class: "pin-description" )%></em></h2></li>
 <%end%>
 
 <% if answer.pin.user_id.nil? %>
 
           <li class="list-group-item"><h5><%= image_tag answer.pin.doctor.image.url(:thumb), class: "resimalt" %><%= "  "%><%= answer.pin.doctor.email %><%= " sordu..." %></h5>
-          <h2><em><%= link_to(answer.pin.description, answer.pin) %></em></h2></li>
+          <div id="pin-description"><h2><em><%= link_to(answer.pin.description, answer.pin, class: "pin-description") %></em></h2></div></li>
 <%end%>
 <!-- cevap table içinde resimle birlikte -->
 
-          <li class="list-group-item"><table><tr><td cellpadding="2"><% if answer.image.file? %><%= image_tag answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></td> <td text-align="center"><% if !(answer.description.nil?) %><h4><span class="glyphicon glyphicon-info-sign"></span>
+          <li class="list-group-item"><table><tr><td cellpadding="2"> <% unless answer.photo.nil? %> <%= image_tag answer.photo.image.url(:medium), class: "img-rounded" %><%end%> </td> <td text-align="center"><% if !(answer.description.nil?) %><h4><span class="glyphicon glyphicon-info-sign"></span>
             <%= answer.description %> </h4><%end%></td></tr></table></li>
 
 <!-- etiketler -->
@@ -35,7 +35,7 @@
               <% end %></p>
           </li>
 
-<!-- user loginse ve cevap thank etmemişse diye thank you butonu-->
+<!--  thank you butonu-->
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-<!-- user loginse ve cevap thank etmişse diye thanked butonu-->
+<!--  thanked butonu-->
 
 
  <% elsif (user_signed_in? && answer.liked_by?(current_user)) %>

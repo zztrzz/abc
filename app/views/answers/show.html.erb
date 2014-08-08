@@ -4,7 +4,7 @@
 
 <% if @answer.description? %>
  
- <div class="box2 col-md-10">
+ <div class="box2 col-md-8">
 		
 <ul class="list-group">
 
@@ -13,7 +13,7 @@
 		 
 		<li class="list-group-item"><%= link_to(@answer.pin.description, @answer.pin) %></li>
 
-		<li class="list-group-item"><div class="row"><div class="col-md-4"><% if @answer.image.file? %><%= image_tag @answer.image.url(:medium), class: "img-rounded" %> <% else %><%= "" %><%end%></div> <div class="col-md-8" text-align="center"><span class="glyphicon glyphicon-info-sign"></span>
+		<li class="list-group-item"><div class="row"><div class="col-md-4"> <% unless @answer.photo.nil? %><%= image_tag @answer.photo.image.url(:medium), class: "img-rounded" %><%end%> </div> <div class="col-md-8" text-align="center"><span class="glyphicon glyphicon-info-sign"></span>
 		  <%= @answer.description %></div></li>
 
 		  <li class="list-group-item">

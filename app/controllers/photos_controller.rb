@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:show, :edit, :update, :destroy,:new]
+  
+   
   # GET /photos
   # GET /photos.json
   def index
@@ -67,8 +68,12 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
     end
 
+def correct_user
+
+
+end 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:name, :image)
+      params.require(:photo).permit(:name, :image, :image_type, answers_attributes: [:id])
     end
 end
