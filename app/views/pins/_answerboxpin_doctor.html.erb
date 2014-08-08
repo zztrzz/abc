@@ -12,7 +12,7 @@
  
 
    <li class="list-group-item"> <% unless answer.photo.nil? %>
-   <%= image_tag answer.photo.image.url(:medium)%><%end%><span class="glyphicon glyphicon-info-sign"></span>
+   <%= image_tag answer.photo.image.url(:medium)%><%end%><span class="glyphicon glyphicon-bullhorn"></span>
      <%= answer.description %></li>
      
 <% if (answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>

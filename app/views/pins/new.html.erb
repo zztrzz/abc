@@ -1,16 +1,27 @@
-<div class="panel panel-info col-md-4">
+ 
+<div align="center">
+
+
+<div class="panel panel-info centersoru">
 <div class="panel-heading">
 <h3 class="panel-title">Sorunu Yaz</h3>
- </div>
+</div>
+
+
 <div class="panel-body">
+	<img src="/assets/grup.jpg" class="imgsoru">
 	<% if user_signed_in? %>
 <%= render 'form' %>
 <%elsif doctor_signed_in? %>
 <%= render 'formdoc' %> 
 <%end%>
 </div>
+
+
+</div>
+</div>
+<div>
+<%= link_to 'Geri Dön', pins_path %>
 </div>
 
-<div class="box">
-<%= link_to 'Back', pins_path %>
-</div>
+ 

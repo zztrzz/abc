@@ -11,11 +11,11 @@
  
 
   <li class="list-group-item"> <% unless answer.photo.nil? %>
-   <%= image_tag answer.photo.image.url(:medium)%><%end%><span class="glyphicon glyphicon-info-sign"></span>
+   <%= image_tag answer.photo.image.url(:medium)%><%end%><span class="glyphicon glyphicon-bullhorn"></span>
      <%= answer.description %></li>
 
    <% if !(answer.liked_by?(current_user)) %>
-   <li class="list-group-item"><%= link_to "Thank", like_answer_path(answer), method: :post , :id=> "mylink2" , :remote => true, :class => "btn btn-warning" %></li> 
+   <li class="list-group-item"><%= link_to "Teşekkür Et", like_answer_path(answer), method: :post , :id=> "mylink2" , :remote => true, :class => "btn btn-default" %></li> 
    <%end%>
 
      

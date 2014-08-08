@@ -1,11 +1,14 @@
-<div class="panel panel-default">
+<div align="center">
 
+
+<div class="panel panel-default centersoru">
 <div class="panel panel-heading">
-
-<h2 class="panel-title">Edit <%= resource_name.to_s.humanize %>
+  <div class="panel-title">Hesabını Düzenle</div>
+</div>
+<h2 class="panel-title"><%= image_tag @user.image.url(:thumb), class: "resim" %> 
 
  
-<%= image_tag @user.image.url(:thumb), class: "resim" %></h2>
+</h2>
                                    
 
  
@@ -13,31 +16,32 @@
   <%= devise_error_messages! %>
 
 
-<div><%= f.label :image %><br />
+<div><%= f.label "Fotoğrafınız" %><br />
   <%= f.file_field :image %></div>
 
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label "Eposta" %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <div><%= f.label "Şifre" %> <i>(Değiştirmek İstemiyorsan Boş Bırak)</i><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label "Şifre Onay" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label "Halenki Şifreniz"%> <i>(değişiklikleri onaylamak için şuanki şifrenize ihtiyacımız var)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Update" %></div>
+<br>
+  <div><%= f.submit "Güncelle", class: "btn btn-success" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Hesabımı İptal Et</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>mutsuz musun? <%= button_to "Hesabımı Sil", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
 </div>
-<%= link_to "Back", :back %>
+<%= link_to "Geri", :back %>
+</div>

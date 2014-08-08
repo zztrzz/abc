@@ -26,16 +26,15 @@ class PinsController < ApplicationController
   # GET /pins/1
   # GET /pins/1.json
   def show
-    if @pin.nil?
-        redirect_to :root
-    end 
-   @pin=Pin.find(params[:id]) unless @pin.nil? 
-   @answers=Pin.find(params[:id]).answers unless @pin.nil?
+     
+   @pin=Pin.find(params[:id])  
+   @answers=Pin.find(params[:id]).answers 
    @photos=Photo.all 
 
    if doctor_signed_in? 
      @docanswer=Pin.find(params[:id]).answers.find_by(doctor_id: current_doctor.id) 
    end
+
   end
 
   # GET /pins/new
@@ -60,17 +59,24 @@ class PinsController < ApplicationController
   # POST /pins
   # POST /pins.json
   def create
-    if user_signed_in?
-    @pin = current_user.pins.build(pin_params) 
 
-  elsif doctor_signed_in? 
-    @pin = current_doctor.pins.build(pin_params)
-  end
+    if user_signed_in?
+       
+       @pin = current_user.pins.build(pin_params) 
+
+    elsif doctor_signed_in? 
+      
+      @pin = current_doctor.pins.build(pin_params)
+   
+    end 
+            
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
       render action: 'new'
     end
+   
+
   end
 
   # PATCH/PUT /pins/1
@@ -111,9 +117,11 @@ class PinsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
+       
+      @pin = Pin.find(params[:id]) 
       
+    
 
-      @pin = Pin.find(params[:id])  
     end
 
     

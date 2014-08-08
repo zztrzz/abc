@@ -14,10 +14,11 @@
 
  <%if user_signed_in? || (doctor_signed_in? && @pin.user.nil?) %>
 
-  <div class="input-group input-group-lg col-md-6" >
+  <div class="input-group input-group-lg" >
      
-    <%= f.label "Sorunuz (Max 150 karakter)" %><br>
-    <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "150" %>
+   
+    <%= f.text_area :description, class: "form-control", rows: "4", maxlength: "150", cols: "120" %>
+     <%= f.label "150 karakter", class: "pull-right" %>
   <br>
 
    
@@ -43,6 +44,7 @@
   <div class="input-group input-group-lg col-md-6">
     <%= f.label "Cevap (Max 150 karakter)" %><br>
     <%= f.text_area :answer, class: "form-control", rows: "4", maxlength: "200", cols: "300" %>
+    
   </div>
 
  <%end%>

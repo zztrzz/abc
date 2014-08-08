@@ -13,13 +13,13 @@ $ ->
   $('#mylink').click ->
   	$(this).removeClass 'disabled'
   	$(this).addClass 'disabled'
-  	$(this).append '-d' 
+  	$(this).append '-ok' 
 
 $ ->
   
   $('#mylink2').click ->
   	$(this).removeClass 'disabled'
   	$(this).addClass 'disabled'
-  	$(this).append '-d' 
+  	$(this).append '-ok' 
  
  

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
    has_many :pins , :dependent => :destroy 
 
    validates :name, :presence => true 
-         
+         validates :sehir, :presence => true 
          acts_as_follower 
          acts_as_liker
 

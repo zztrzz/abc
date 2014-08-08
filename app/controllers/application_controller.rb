@@ -29,6 +29,8 @@ protected
     devise_parameter_sanitizer.for(:account_update) << :email
     devise_parameter_sanitizer.for(:account_update) << :image
     devise_parameter_sanitizer.for(:sign_up) << :image
+    devise_parameter_sanitizer.for(:account_update) << :sehir
+    devise_parameter_sanitizer.for(:sign_up) << :sehir
 
 
 
