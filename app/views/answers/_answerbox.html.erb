@@ -61,7 +61,7 @@
         <% elsif (doctor_signed_in? && answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>
                 <li class="list-group-item"><%= link_to "Agree", like_answer_path(answer), method: :post , :class => "btn btn-default" , :remote => true, :id=> "mylink" %></li>
 
-                <li class="list-group-item" id="agreement"><span class="label label-default"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agreed" %></span></li>
+                <li class="list-group-item" id="agreement"><span class="label label-default"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></span></li>
 
 <!-- doktor loginse ve cevaba agree olmışsa AGREED butonu (info yani mavi) ve altına kaç agree olduğu bilgisi-->
 
@@ -69,7 +69,7 @@
 
                 <li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Agreed</button></li>
 
-                 <li class="list-group-item" id="agreement"><span class="label label-default"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doctors agreed" %></span></li>
+                 <li class="list-group-item" id="agreement"><span class="label label-default"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></span></li>
 
 
 
