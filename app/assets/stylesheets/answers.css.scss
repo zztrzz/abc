@@ -14,9 +14,9 @@
 
  .checkcontainer { border:1px dashed #ccc; width:600px; height: 200px; overflow-y: scroll; }
 
- .pin-description  { color: #3498db;}
-
+ .pin-description  { color: #1abc9c;}
+ .pin-description:hover {color:#16a085;}
 
 .takip { color: grey; font-size: 12px; }
 
- 
+ .eskipindesc {color: #3498db;}
