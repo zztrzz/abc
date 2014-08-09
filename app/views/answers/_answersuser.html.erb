@@ -1,10 +1,14 @@
+ 
 
 
 <div id="pins2" class="transitions-enabled">
 
- 
+
+
 <% @answers.each do |answer| %>
  
+  
+
 <% unless answer.pin.user_id.nil? %>
       <div class="box2">
       <ul class="list-group">
@@ -26,7 +30,7 @@
 <!-- cevap table içinde resimle birlikte -->
 
           <li class="list-group-item"><table><tr><td cellpadding="2"> <% unless answer.photo.nil? %> <%= image_tag answer.photo.image.url(:thumb), class: "img-rounded" %><%end%> </td> <td text-align="center"><% if !(answer.description.nil?) %><h4> 
-            <%= answer.description %></h4><%end%></td></tr></table></li>
+            <span class="glyphicon glyphicon-info-sign"></span><%= answer.description %></h4><%end%></td></tr></table></li>
 
             <!--  thank you butonu-->
 
@@ -46,7 +50,8 @@
 
           <li class="list-group-item", id="agreement"><span id="onay"><img src="/assets/greydocimage.png" class="icon"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>Doktor Onayladı</span></li>
 
- 
+          
+
            
  
       </ul>
