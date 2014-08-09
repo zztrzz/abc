@@ -1,5 +1,5 @@
 
- <div align="center"><div class="label label-info" align="center"><%= link_to "Kullanıcı Soruları için tıklayın", pins_path %></div></div><div class="glyphicon glyphicon-login"></div>
+ <div align="center"><div align="center"><%= link_to "Tüm sorular için tıklayın", pins_path, class: "btn sorubandi" %></div></div><div class="glyphicon glyphicon-login"></div>
   <div id="pins" class="transitions-enabled">
     
   <% @pins.each do |pin| %>

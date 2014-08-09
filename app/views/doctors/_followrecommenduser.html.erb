@@ -1,0 +1,21 @@
+
+               <ul class="list-group">
+               <div class="row">
+               <div class="col-md-12" align="center">
+
+                  <% if !(@doctor.followed_by?(current_user)) %>
+
+                <%= link_to "Takip Et", follow_doctor_path(@doctor), method: :post , :class => "btn btn-default glyphicon glyphicon-ok-sign" , :remote => true, :id=> "mylink" %> 
+
+                <%end%>
+
+                  <% if !(@doctor.liked_by?(current_user)) %>
+                                 
+                 <%= link_to "Tavsiye", like_doctor_path(@doctor), method: :post , :class => "btn btn-success glyphicon glyphicon-star" , :remote => true, :id=> "mylink2" %> 
+
+                 <%end%>
+
+               </div>
+             </div>
+ 
+              </ul>

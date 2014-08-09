@@ -25,7 +25,7 @@
 <!-- user view for pins -->
 
 <%if doctor_signed_in?%>
-    <div align="center"><div class="label label-info" align="center"><%= link_to "Doktor Soruları için tıklayın", doktorindex_path %></div></div>
+    <div align="center"><h4><div align="center"><%= link_to "Doktor Soruları için tıklayın", doktorindex_path, class: "btn sorubandi" %></h4></div></div>
     <div class="glyphicon glyphicon-login"></div>
 
     <%end%>
@@ -36,8 +36,10 @@
   <% @pins.each do |pin| %>
  
       <% if (user_signed_in? && pin.doctor.nil?) %>
+
       <div class="box">
-      <ul class="list-group">
+
+       <ul class="list-group">
             
             <li class="list-group-item"><h6><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(pin.created_at) + " ago " %><%= pin.user.name if pin.user.name? %><%= " "+"sordu.  " %><span class="glyphicon glyphicon-map-marker"></span><%= pin.user.sehir unless pin.user.sehir.nil? %>
             </li></h6>
@@ -65,7 +67,7 @@
 
    <!-- doctor if-->   <% if doctor_signed_in? %> 
 
-
+ 
 
        <div class="box">
        <ul class="list-group">
@@ -94,9 +96,24 @@
 
 
               <% unless (pin.doctor==current_doctor) %>
+               <% a=0 %>
+                <% pin.answers.each do |x| %>
+                   <% if x.doctor==current_doctor %>
+                      <% a=a+1 %>
+                        <% end %>
+                           <%end%>
+              <% if a==0 %>
               <div class="actions">
               <li class="list-group-item"><%= link_to 'Answer',pin_path(pin) %> </li>
+
               </div>
+              <%else%>
+              <div class="actions">
+              <li class="list-group-item"><%= 'Cevapladın' %> </li>
+
+              </div>
+
+              <%end%>
               <%end%>
 
            

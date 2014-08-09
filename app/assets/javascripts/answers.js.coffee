@@ -4,6 +4,11 @@
 
 
      
-   
+$ ->
+  $('#pins2').imagesLoaded ->
+    $('#pins2').masonry
+      itemSelector: '.box2'
+      isFitWidth: true
+ 
 
    

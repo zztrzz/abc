@@ -1,0 +1,60 @@
+
+
+<div id="pins2" class="transitions-enabled">
+
+ 
+<% @answers.each do |answer| %>
+ 
+<% unless answer.pin.user_id.nil? %>
+      <div class="box2">
+      <ul class="list-group">
+
+<!-- answerbox time ago ve doktor ismi-->
+   
+      <li class="list-group-item"><h5><%= image_tag answer.doctor.image.url(:thumb), class: "resimdoktorcevap" %><span id="doktorismi"><%= "  "%><img src="/assets/docimage.png"><strong><%= link_to answer.doctor.email, your_doctor_path(answer.doctor), id: "doktorismi" %></strong></span> <%= " cevapladı." %></h5></li>
+
+<!-- soru -->
+
+<% if answer.pin.doctor_id.nil? %>
+          <li class="list-group-item">
+          <h3 class="prela"><em><%= link_to(answer.pin.description, answer.pin, class: "pin-description" )%></em></h3></li>
+<%end%>
+
+ 
+ 
+
+<!-- cevap table içinde resimle birlikte -->
+
+          <li class="list-group-item"><table><tr><td cellpadding="2"> <% unless answer.photo.nil? %> <%= image_tag answer.photo.image.url(:thumb), class: "img-rounded" %><%end%> </td> <td text-align="center"><% if !(answer.description.nil?) %><h4> 
+            <%= answer.description %></h4><%end%></td></tr></table></li>
+
+            <!--  thank you butonu-->
+
+
+<% if !(answer.liked_by?(current_user)) %>
+  <li class="list-group-item" align="center"><%= link_to "Teşekkür Et", like_answer_path(answer), method: :post , :id=> "mylink" , :remote => true, :class => "btn btn-success" %></li>
+  
+
+<!--  thanked butonu-->
+
+ <% elsif answer.liked_by?(current_user) %>
+ <li class="list-group-item" align="center"><h4><span class="btn btn-default">Teşekkür Ettin</span></h4></li>
+    
+<%end%>
+
+ 
+
+          <li class="list-group-item", id="agreement"><span id="onay"><img src="/assets/greydocimage.png" class="icon"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>Doktor Onayladı</span></li>
+
+ 
+           
+ 
+      </ul>
+      </div>
+    
+<%end%>
+<%end%>
+
+
+</div>
+

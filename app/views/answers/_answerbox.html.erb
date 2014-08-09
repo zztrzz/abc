@@ -41,7 +41,7 @@
 
 <% if (user_signed_in? && !(answer.liked_by?(current_user))) %>
   <li class="list-group-item"><%= link_to "Teşekkür Et", like_answer_path(answer), method: :post , :id=> "mylink" , :remote => true, :class => "btn btn-default" %></li>
-  <li class="list-group-item"><h5 class="label label-default"><em><span id="agree"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>doctors agree</span></em></h5></li>
+  <li class="list-group-item"><h5 class="label label-default"><em><span id="agree"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>Doktor Onayladı</span></em></h5></li>
 
 
 
@@ -59,17 +59,17 @@
 <!-- doktor loginse ve cevaba agree olmamışsa agree butonu ve altına kaç doktor agree olduğu bilgisi -->
 
         <% elsif (doctor_signed_in? && answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>
-                <li class="list-group-item"><%= link_to "Agree", like_answer_path(answer), method: :post , :class => "btn btn-default" , :remote => true, :id=> "mylink" %></li>
+                <li class="list-group-item"><%= link_to "Onayla", like_answer_path(answer), method: :post , :class => "btn btn-default" , :remote => true, :id=> "mylink" %></li>
 
-                <li class="list-group-item" id="agreement"><span class="label label-default"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></span></li>
+                <li class="list-group-item" id="agreement"><span id="onay"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></span></li>
 
 <!-- doktor loginse ve cevaba agree olmışsa AGREED butonu (info yani mavi) ve altına kaç agree olduğu bilgisi-->
 
                 <%elsif doctor_signed_in? && answer.liked_by?(current_doctor)%>
 
-                <li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Agreed</button></li>
+                <li class="list-group-item"><button class="btn btn-info"><span class="glyphicon glyphicon-star"><%= " "%></span>Onayladın</button></li>
 
-                 <li class="list-group-item" id="agreement"><span class="label label-default"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></span></li>
+                 <li class="list-group-item" id="agreement"><span id="onay"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></span></li>
 
 
 

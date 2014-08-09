@@ -21,6 +21,7 @@
           <%if current_doctor.email? %>
         <li><%= link_to ("Merhaba"+" "+current_doctor.email+"!"), edit_doctor_registration_path %></li>
         <li> <%= link_to '+ Doktorlara Sor', new_pin_path %></li>
+        <li><%= link_to  "", new_pin_path, class: "glyphicon glyphicon-envelope" %></li>
           <%else%>
           <li><%= link_to "Hesap Ayarları", edit_doctor_registration_path %></li>
           

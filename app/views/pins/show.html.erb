@@ -3,34 +3,24 @@
 
 <div class="col-md-6">
 <div class="row">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h6 class="pull-right"><span class="glyphicon glyphicon-time"></span><%= " "+time_ago_in_words(@pin.created_at) + " ago " %></h6>
-    <% if @pin.doctor.nil? %>
-    <h4><%= image_tag @pin.user.image.url(:thumb), class: "resim"   %><%= "  "%>
-      <%= @pin.user.name + " sordu, " %><span class="glyphicon glyphicon-map-marker"></span><%= @pin.user.sehir unless @pin.user.sehir.nil? %></h4></div>
-      <% elsif @pin.user.nil? %>
-<h5><%= image_tag @pin.doctor.image.url(:thumb), class: "resim"   %><%= "  "%>
-      <%= @pin.doctor.name %><%= " sordu..." %></h5></div>
-      <%end%>
-
-
-  <div class="panel-body">
-	 
-
-    <%= @pin.description %> 
-   
-  </div>
-</div>
-</div>
- 
-
-<div class="row">
 <%= link_to 'Edit', edit_pin_path(@pin) if (@pin.user==current_user) %> 
 <%= link_to 'Tüm Sorular', pins_path %> 
 </div>
+ 
+<div class="panel panel-default">
+  <div class="container">
+  ><%= "Bir üyemiz sordu:" %>
+     <h4><%= @pin.description %> </h4>
+    
+ </div>
+</div>
+    
 
-<div class="row">
+ 
+
+
+<div class="col-md-9">
+ 
   <% if doctor_signed_in? && (@pin.doctor!=current_doctor) %>
      <% a=0 %>
      <% @pin.answers.each do |x| %>
@@ -46,19 +36,18 @@
   <%end%>
   <%end%>
  
-</div>
+ 
 
- <div class="row">
+  
 <% if user_signed_in? %>
 <%= render 'pins/answerboxpin_user' %>
 <% elsif doctor_signed_in? %>
  <%= render 'pins/answerboxpin_doctor' %>
  <%end%>
- </div>
-
  
 </div>
-
+ 
+ 
 
 <%end%>
 
