@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   resources :answers
 
+  get "/pins/sorularim" => "pins#sorularim"
   get "pins/doktorindex" => "pins#doktorindex", :as => "doktorindex"
 
   resources :pins
-
 
   resources :topics
 

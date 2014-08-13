@@ -1,5 +1,37 @@
+ <!-- burayı test etmelisin -->
  
+ 
+
+<% unless @answer.nil? %>
+
+<ul class="list-group">
+
+  <li class="list-group-item">
+   <% unless @answer.doctor.image_file_size.nil? %><%= image_tag @answer.doctor.image.url(:thumb), class: "resimalt" %><%= "  "%><%end%><img src="/assets/docimage.png"><span id="doktorismi"><strong><%= @answer.doctor.email %></strong><%= "  "%><%= @answer.doctor.aop %></span></li>
+
+   <li class="list-group-item onayla">
+     <img src="/assets/greydocimage.png" class="icon"><%= Like.select("liker_id").where(likeable_id: @answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></li>
+ 
+
+  <li class="list-group-item"> <% unless @answer.photo.nil? %>
+   <%= image_tag @answer.photo.image.url(:thumb)%><%end%><span class="glyphicon glyphicon-info-sign"></span>
+     <%= @answer.description %></li>
+
+   <% if !(@answer.liked_by?(current_user)) %>
+   <li class="list-group-item" align="center"><%= link_to "Teşekkür Et", like_answer_path(@answer), method: :post , :id=> "mylink2" , :remote => true, :class => "btn btn-success" %></li> 
+
+   <% elsif @answer.liked_by?(current_user) %>
+
+ <li class="list-group-item" align="center"><span class="btn btn-default">Teşekkür Ettin</span></li> 
+ <%end%>
+<%end%>
+
+<!-- burayı test etmelisin -->
+ <hr>
+
+
 <% @answers.each do |answer| %>
+ 
  
  
 <ul class="list-group">

@@ -1,4 +1,4 @@
- 
+
 
 <div id="pins2" class="transitions-enabled">
 
@@ -47,11 +47,8 @@
 <%end%>
 
  
-          
-          <li class="list-group-item", id="agreement">
 
-
-            <span id="onay"><img src="/assets/greydocimage.png" class="icon"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>Doktor Onayladı</span></li>
+          <li class="list-group-item", id="agreement"><span id="onay"><img src="/assets/greydocimage.png" class="icon"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>Doktor Onayladı</span></li>
 
           
 
