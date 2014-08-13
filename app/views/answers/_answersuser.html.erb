@@ -53,9 +53,14 @@
 
             <span id="onay"><img src="/assets/greydocimage.png" class="icon"><%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " "%>Doktor Onayladı</span></li>
 
-          
+            
+<%if (Answer.where(pin_id: answer.pin_id).distinct.count) >1 %>
 
-           
+       <li class="list-group-item" align="center">
+
+
+            <%= link_to "Diğer cevaplar için tıklayın", pin_path(answer.pin), :id=> "allanswers" %></li>
+    <%end%>
  
       </ul>
       </div>
