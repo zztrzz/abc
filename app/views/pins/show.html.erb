@@ -1,26 +1,22 @@
  
 <%unless @pin.nil? %> 
 
-<div class="col-md-6">
-<div class="row">
-<%= link_to 'Edit', edit_pin_path(@pin) if (@pin.user==current_user) %> 
-<%= link_to 'Tüm Sorular', pins_path %> 
-</div>
  
-<div class="panel panel-default">
-  <div class="container">
-  ><%= "Bir üyemiz sordu:" %>
-     <h4><%= @pin.description %> </h4>
-    
- </div>
-</div>
-    
-
  
-
-
-<div class="col-md-9">
+ <div class="container">
+<div class="col-md-5 prela">
+  <%= link_to 'Düzenle', edit_pin_path(@pin) if (@pin.user==current_user) %> 
+  <%= link_to 'Tüm Sorular', pins_path %> <br><br>
+  <ul class="list-group">
+  <li class="list-group-item"><%= "Bir üyemiz sordu:" %></li>
+  <li class="list-group-item"> <h4><%= @pin.description %> </h4></li>
  
+  
+ </div></div>
+ 
+ <div class="container">
+ <div class="col-md-5">
+
   <% if doctor_signed_in? && (@pin.doctor!=current_doctor) %>
      <% a=0 %>
      <% @pin.answers.each do |x| %>
@@ -45,16 +41,15 @@
  <%= render 'pins/answerboxpin_doctor' %>
  <%end%>
  
-</div>
  
- 
+ </div>
+  </div>
+
+ </div>
 
 <%end%>
 
  
- 
-
-
 
 
 

@@ -6,13 +6,13 @@
 <ul class="list-group">
 
   <li class="list-group-item">
-   <h4><% unless answer.doctor.image_file_size.nil? %><%= image_tag answer.doctor.image.url(:thumb), class: "resimalt" %><%= "  "%><%end%><%= answer.doctor.email %><%= " cevapladı..." %></h4></li>
+   <% unless answer.doctor.image_file_size.nil? %><%= image_tag answer.doctor.image.url(:thumb), class: "resimalt" %><%= "  "%><%end%><img src="/assets/docimage.png"><span id="doktorismi"><strong><%= answer.doctor.email %></strong><%= "  "%><%= answer.doctor.aop %></span></li>
    <li class="list-group-item">
      <%= Like.select("liker_id").where(likeable_id: answer.id, likeable_type: "Answer").distinct.count %><%= " doktor onayladı" %></li>
  
 
    <li class="list-group-item"> <% unless answer.photo.nil? %>
-   <%= image_tag answer.photo.image.url(:medium)%><%end%><span class="glyphicon glyphicon-bullhorn"></span>
+   <%= image_tag answer.photo.image.url(:thumb)%><%end%><span class="glyphicon glyphicon-info-sign"></span>
      <%= answer.description %></li>
      
 <% if (answer.doctor != current_doctor && !(answer.liked_by?(current_doctor)))%>
@@ -22,4 +22,6 @@
   </ul>
  
   <% end %>
+ 
+
  

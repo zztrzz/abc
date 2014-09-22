@@ -24,7 +24,7 @@
 
 <!-- user view for pins -->
 
-<%if doctor_signed_in?%>
+    <%if doctor_signed_in?%>
     <div align="center"><h4><div align="center"><%= link_to "Doktor Soruları için tıklayın", doktorindex_path, class: "btn sorubandi" %></h4></div></div>
     <div class="glyphicon glyphicon-login"></div>
 
@@ -65,7 +65,9 @@
                 
   <!-- dctor view for pins -->
 
-   <!-- doctor if-->   <% if doctor_signed_in? %> 
+   <!-- doctor bağlı ve ana sayfası sorular geliyor onlardan cevaplayacak-->  
+
+    <% if doctor_signed_in? %> 
 
  
 

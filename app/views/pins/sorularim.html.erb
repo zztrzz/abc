@@ -1,5 +1,5 @@
 
-  
+  <% unless doctor_signed_in? %>
   <div id="pins" class="transitions-enabled">
 
   <% current_user.pins.each do |pin| %>
@@ -32,6 +32,7 @@
       </div>
 
 
+      <%end%>
       <%end%>
       <%end%>
                 
